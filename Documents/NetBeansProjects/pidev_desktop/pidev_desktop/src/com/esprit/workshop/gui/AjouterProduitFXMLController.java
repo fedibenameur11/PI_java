@@ -11,9 +11,17 @@ import com.esprit.workshop.services.ServiceCategorie_prod;
 import com.esprit.workshop.services.ServiceProduit;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -46,14 +55,29 @@ public class AjouterProduitFXMLController implements Initializable {
     private TextField tfQuantite;
     @FXML
     private TextField tfPoids;
+    @FXML
+    private ComboBox<String> categorieBox;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        try {
+            // TODO
+            remplirCategorieBox();
+        } catch (SQLException ex) {
+            Logger.getLogger(AjouterProduitFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
+    private void remplirCategorieBox() throws SQLException {
+        ServiceCategorie_prod sp=new ServiceCategorie_prod();
+        List<Categorie_prod> categories= sp.selectAll(); // Récupérer la liste des catégories depuis la base de données
+        List<String> nomsCategories = categories.stream().map(Categorie_prod::getNom).collect(Collectors.toList());
+        categorieBox.setItems(FXCollections.observableArrayList(nomsCategories));
+    }
+    
     public boolean isFloat(String str) {
     try {
         Float.parseFloat(str);
@@ -62,6 +86,7 @@ public class AjouterProduitFXMLController implements Initializable {
         return false;
     }
 }
+    
 public boolean isNumber(String input) {
     try {
         Double.parseDouble(input);
@@ -72,7 +97,7 @@ public boolean isNumber(String input) {
 }
 
     @FXML
-    private void AjouterProduit(ActionEvent event) {
+    private void AjouterProduit(ActionEvent event) throws SQLException {
         if (tfNom.getText().isEmpty() || tfPrix.getText().isEmpty() || tfQuantite.getText().isEmpty() || tfPoids.getText().isEmpty()) {
             Alert al = new Alert(Alert.AlertType.WARNING);
             al.setTitle("Erreur de donnee");
@@ -97,12 +122,31 @@ public boolean isNumber(String input) {
             al.setContentText("Le champ du poids ne doit contenir aucun caractere !");
             al.show();
         }
+            ServiceCategorie_prod sp=new ServiceCategorie_prod();
+        List<Categorie_prod> listeCategories= sp.selectAll();
             
-            Produit p = new Produit(tfNom.getText(), Float.parseFloat(tfPrix.getText()), Integer.parseInt(tfQuantite.getText()),Float.parseFloat(tfPoids.getText()));
-            ServiceProduit sp = new ServiceProduit();
+            
+            String categorieNom = categorieBox.getValue(); // assuming comboBoxCategorie is your ComboBox<String>
+            System.out.println(categorieNom);
+
+// Find the corresponding Categorie_prod object based on its name
+                Categorie_prod categorie = null;
+                for (Categorie_prod c : listeCategories) {
+                    if (c.getNom().equals(categorieNom)) {
+                        categorie = c;
+                        break;
+                    }
+                }
+                System.out.println(categorie);
+
+// Create a new SimpleObjectProperty object and assign the categorie object to its value
+            //SimpleObjectProperty<Categorie_prod> categorieProp = new SimpleObjectProperty<>(categorie);
+   
+            Produit p = new Produit(tfNom.getText(), Float.parseFloat(tfPrix.getText()), Integer.parseInt(tfQuantite.getText()),Float.parseFloat(tfPoids.getText()),categorie);
+            ServiceProduit sp1 = new ServiceProduit();
             
             try {
-                sp.insertOne1(p);
+                sp1.insertOne1(p);
             } catch (SQLException ex) {
                 Alert al = new Alert(Alert.AlertType.ERROR);
                 al.setTitle("Erreur de donnee");
@@ -121,7 +165,7 @@ public boolean isNumber(String input) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherProduitFXML.fxml"));
             Parent root = loader.load();
             AfficherProduitFXMLController afPFXC = loader.getController();
-            afPFXC.afficherProduits();
+            //afPFXC.afficherProduits();
             
             //Step 1 = Par scene
 //            tfNom.getScene().setRoot(root);
@@ -140,6 +184,11 @@ public boolean isNumber(String input) {
 
     @FXML
     private void Reset(ActionEvent event) {
+        
+        tfNom.setText("");
+        tfPrix.setText("");
+        tfQuantite.setText("");
+        tfPoids.setText("");
     }
     
 }

@@ -31,7 +31,7 @@ import javafx.beans.value.ObservableValue;
 public class Produit {
     
     //var
-    private IntegerProperty id;
+    private int id;
     private StringProperty nom;
     private DoubleProperty prix;
     private IntegerProperty quantite;
@@ -44,7 +44,7 @@ public class Produit {
     }
 
     public Produit(int id, String nom, double prix, int quantite, double poids) {
-        this.id = new SimpleIntegerProperty(id);
+        this.id = id;
         this.nom = new SimpleStringProperty(nom);
         this.prix = new SimpleDoubleProperty(prix);
         this.quantite = new SimpleIntegerProperty(quantite);
@@ -64,10 +64,7 @@ public class Produit {
         this.cat = new SimpleObjectProperty<>(cat);
     }
     public void setId(int id) {
-        this.id.set(id);
-    }
-public IntegerProperty idProperty() {
-        return id;
+        this.id=id;
     }
 
     public StringProperty nomProperty() {
@@ -87,7 +84,7 @@ public IntegerProperty idProperty() {
 }
 
     public int getId() {
-        return id.get();
+        return id;
     }
 
     public String getNom() {

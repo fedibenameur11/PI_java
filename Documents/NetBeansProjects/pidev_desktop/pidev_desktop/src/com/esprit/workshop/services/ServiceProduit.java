@@ -45,7 +45,7 @@ public void insertOne(Produit t) throws SQLException {
 
     
     public void insertOne1(Produit t) throws SQLException {
-    String req = "INSERT INTO `produit`(`nom`, `prix`, `quantite`, `poids`) VALUES (?,?,?,?)";
+    String req = "INSERT INTO `produit`(`nom`, `prix`, `quantite`, `poids`, `cat`) VALUES (?,?,?,?,?)";
 
     PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -53,16 +53,11 @@ public void insertOne(Produit t) throws SQLException {
     ps.setDouble(2, t.getPrix());
     ps.setInt(3, t.getQuantite());
     ps.setDouble(4, t.getPoids());
-    //ps.setInt(5, t.getCat().getId());
+    ps.setInt(5, t.getCat().getId());
 
     ps.executeUpdate();    
     System.out.println("Produit ajouté !");
 }
-
-
-    public void updateOne(Categorie_prod t) throws SQLException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     
     public void deleteOne(Produit t) throws SQLException{
@@ -110,16 +105,27 @@ public void insertOne(Produit t) throws SQLException {
         return temp;     
     }
 
-    @Override
 
     public void updateOne(Produit t,int id) throws SQLException {
-        String req = "UPDATE `produit` SET prix=?, quantite=?, poids=?,nom=? WHERE id=?";
+        String req = "UPDATE `produit` SET nom=?,prix=?, quantite=?, poids=? WHERE id=?";
         PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setDouble(1,t.getPrix());
-        ps.setInt(2,t.getQuantite());
-        ps.setDouble(3,t.getPoids());
-        ps.setString(4, t.getNom());
+        ps.setString(1, t.getNom());
+        ps.setDouble(2,t.getPrix());
+        ps.setInt(3,t.getQuantite());
+        ps.setDouble(4,t.getPoids());       
         ps.setInt(5, id);
+        ps.executeUpdate();
+    System.out.println("Produit mis à jour !");
+    }
+    
+    public void updateOne(Produit t) throws SQLException {
+        String req = "UPDATE `produit` SET nom=?,prix=?, quantite=?, poids=? WHERE id=?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1, t.getNom());
+        ps.setDouble(2,t.getPrix());
+        ps.setInt(3,t.getQuantite());
+        ps.setDouble(4,t.getPoids());
+        ps.setInt(5, t.getId());
         ps.executeUpdate();
     System.out.println("Produit mis à jour !");
     }

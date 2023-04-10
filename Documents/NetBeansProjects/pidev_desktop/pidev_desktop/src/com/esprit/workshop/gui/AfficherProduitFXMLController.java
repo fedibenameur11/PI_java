@@ -7,6 +7,8 @@ package com.esprit.workshop.gui;
 
 import com.esprit.workshop.entites.Categorie_prod;
 import com.esprit.workshop.entites.Produit;
+import com.esprit.workshop.services.ServiceProduit;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,16 +16,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -45,6 +57,10 @@ public class AfficherProduitFXMLController implements Initializable {
     private ObservableList<Produit> produits;
     @FXML
     private TableColumn<Produit, Categorie_prod> CategorieColumn;
+    @FXML
+    TableColumn<Produit, Void> colSuppression = new TableColumn<>("Supprimer");
+    @FXML
+    private TableColumn<Produit, Void> colModification;
 
     /**
      * Initializes the controller class.
@@ -72,6 +88,163 @@ public class AfficherProduitFXMLController implements Initializable {
         }
     }
 });
+        nomColumn.setCellFactory(col -> {
+        TableCell<Produit, String> cell = new TableCell<Produit, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : item);
+                setAlignment(Pos.CENTER); // Centrer le texte dans la cellule
+                    }
+                };
+                return cell;
+            });
+        prixColumn.setCellFactory(col -> {
+        TableCell<Produit, Double> cell = new TableCell<Produit, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : ""+item);
+                setAlignment(Pos.CENTER); // Centrer le texte dans la cellule
+                    }
+                };
+                return cell;
+            });
+        quantiteColumn.setCellFactory(col -> {
+        TableCell<Produit, Integer> cell = new TableCell<Produit, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : ""+item);
+                setAlignment(Pos.CENTER); // Centrer le texte dans la cellule
+                    }
+                };
+                return cell;
+            });
+        poidsColumn.setCellFactory(col -> {
+        TableCell<Produit, Double> cell = new TableCell<Produit, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : ""+item);
+                setAlignment(Pos.CENTER); // Centrer le texte dans la cellule
+                    }
+                };
+                return cell;
+            });
+        
+        CategorieColumn.setCellFactory(col -> {
+        TableCell<Produit, Categorie_prod> cell = new TableCell<Produit, Categorie_prod>() {
+            @Override
+            protected void updateItem(Categorie_prod item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : ""+item.getNom());
+                setAlignment(Pos.CENTER); // Centrer le texte dans la cellule
+                    }
+                };
+                return cell;
+            });
+        
+        colSuppression.setPrefWidth(80);
+        colSuppression.setCellFactory(column -> {
+                        return new TableCell<Produit, Void>() {
+                            private final Button btnSupprimer = new Button("Supprimer");
+
+                            {
+                                btnSupprimer.setOnAction(event -> {
+                                    Produit produit = getTableView().getItems().get(getIndex());
+                                    ServiceProduit serviceProduit = new ServiceProduit();
+                                    try {
+                                        serviceProduit.deleteOne(produit);
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(AfficherProduitFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    // Mettre à jour la table avec les produits restants
+                                    //afficherProduits();
+                                    tableView.getItems().remove(produit); // Supprimer le produit de la TableView
+                                    //tableView.refresh(); 
+                                });
+                                    Image image = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png");
+
+                                    // Création de l'objet ImageView
+                                    ImageView imageView = new ImageView(image);
+
+                                    // Redimensionnement de l'image pour qu'elle s'adapte à la boîte de dialogue
+                                    imageView.setFitWidth(20);
+                                    imageView.setFitHeight(20);
+                                //btnSupprimer.setGraphic(new ImageView(new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png")));
+                                btnSupprimer.setGraphic(imageView);
+                                btnSupprimer.getStyleClass().add("icon-only");
+                                
+                                
+                                
+                                
+                            }
+                            @Override
+                            protected void updateItem(Void item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                } else {
+                                    setGraphic(btnSupprimer);
+                                }
+                            }
+                        };
+                    });
+        
+        colModification.setCellFactory(column -> {
+        return new TableCell<Produit, Void>() {
+            private final Button btn = new Button("Modifier");
+
+            {
+                btn.setOnAction(event -> {
+                    try {
+                        Produit produit = getTableView().getItems().get(getIndex());
+                        // Rediriger vers la vue de modification avec les informations du produit sélectionné
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierProduitFXML.fxml"));
+                        Parent root = loader.load();
+
+                        ModifierProduitFXMLController controller = loader.getController();
+                        controller.initData(produit);
+                        System.out.println(produit);
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+                        stage.setScene(scene);
+                        stage.showAndWait();
+                        // Actualiser la table des produits après la modification
+                        //afficherProduits();
+                        tableView.getItems();
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherProduitFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                Image image2 = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/modifier.png");
+
+                                    // Création de l'objet ImageView
+                                    ImageView imageView2 = new ImageView(image2);
+
+                                    // Redimensionnement de l'image pour qu'elle s'adapte à la boîte de dialogue
+                                    imageView2.setFitWidth(20);
+                                    imageView2.setFitHeight(20);
+                                //btnSupprimer.setGraphic(new ImageView(new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png")));
+                                btn.setGraphic(imageView2);
+                                btn.getStyleClass().add("icon-only");
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btn);
+                }
+                            }
+                        };
+                    });
+        
+        
+        
         tableView.setItems(produits);
     }
     void afficherProduits() {

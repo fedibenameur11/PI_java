@@ -45,7 +45,8 @@ public class MainClass {
             //sc.deleteOne(c1);
             //sc.deleteOne(25);
             //sp.deleteOne(p);
-            sp.updateOne(p2,11);
+            sp.deleteOne(43);
+            //sp.updateOne(p2,11);
             
             System.out.println(sc.selectAll());
             //System.out.println(sp.selectAll());

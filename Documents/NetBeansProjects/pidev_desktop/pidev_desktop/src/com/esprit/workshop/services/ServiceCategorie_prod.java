@@ -47,15 +47,25 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
         System.out.println("Categorie ajouté !");
     }
 
-    @Override
+    
     public void updateOne(Categorie_prod t,int id) throws SQLException{
-        String req = "UPDATE `produit` SET nom=? WHERE id=?";
+        String req = "UPDATE `categorie_prod` SET nom=? WHERE id=?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1,t.getNom());
         ps.setInt(2, id);
         ps.executeUpdate();
     System.out.println("Categorie mis à jour !");
     }
+    @Override
+    public void updateOne(Categorie_prod t) throws SQLException{
+        String req = "UPDATE `categorie_prod` SET nom = ? WHERE id = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1,t.getNom());
+        ps.setInt(2, t.getId());
+        ps.executeUpdate();
+    System.out.println("Categorie mis à jour !");
+    }
+
 
     @Override
     public void deleteOne(Categorie_prod t) throws SQLException{
@@ -97,6 +107,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
         return temp;
         
     }
+
     
     
     

@@ -16,7 +16,7 @@ public interface IService<T> {
     
     void insertOne(T t) throws SQLException;
     
-    void updateOne(T t,int id) throws SQLException;
+    void updateOne(T t) throws SQLException;
     
     void deleteOne(T t) throws SQLException;
     void deleteOne(int id) throws SQLException;

@@ -77,29 +77,27 @@ public class AjouterCategorieFXMLController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCategorieFXML.fxml"));
             Parent root = loader.load();
             AfficherCategorieFXMLController afPFXC = loader.getController();
-            List<Categorie_prod> list = new ServiceCategorie_prod().selectAll();
-            String s = list.toString();
-            afPFXC.setLabel(s);
+            //afPFXC.afficherCategories();
             
             //Step 1 = Par scene
 //            tfNom.getScene().setRoot(root);
             //Step 2 = Par Stage
             Stage st = new Stage();
-            st.setTitle("");
+            st.setTitle("Liste des Categories");
             st.setScene(new Scene(root));
             st.show();
             
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }catch(Exception ex){
+        } catch(Exception ex){
             ex.printStackTrace();
         }
     }
 
     @FXML
     private void Reset(ActionEvent event) {
+        tfNomCat.setText("");
+        
     }
     
 }

@@ -34,10 +34,15 @@ public class NewFXMain extends Application {
     public void start(Stage primaryStage) {
        
         try {
+            //Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterCategorieFXML.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherProduitFXML.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("../gui/ModifierProduitFXML.fxml"));
             Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterProduitFXML.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherCategorieFXML.fxml"));
+
             
-            Scene scene = new Scene(root, 800, 500);
+            
+            Scene scene = new Scene(root);
         
             primaryStage.setTitle("SportEra'S");
             //primaryStage.setMaximized(true);
