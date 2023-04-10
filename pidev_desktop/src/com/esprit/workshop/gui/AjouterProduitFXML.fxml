@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterProduitFXMLController">
+   <children>
+      <Button fx:id="btnAjouter_Produit" layoutX="69.0" layoutY="327.0" mnemonicParsing="false" onAction="#AjouterProduit" text="Ajouter" />
+      <Button fx:id="btnAfficher_Produit" layoutX="212.0" layoutY="327.0" mnemonicParsing="false" onAction="#AfficherProduit" text="Afficher" />
+      <Button fx:id="btnReset" layoutX="367.0" layoutY="327.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <Label layoutX="72.0" layoutY="47.0" text="nom" />
+      <Label layoutX="71.0" layoutY="101.0" text="prix" />
+      <Label layoutX="59.0" layoutY="155.0" text="quantite" />
+      <Label layoutX="68.0" layoutY="206.0" text="poids" />
+      <TextField fx:id="tfNom" layoutX="147.0" layoutY="42.0" />
+      <TextField fx:id="tfPrix" layoutX="147.0" layoutY="96.0" />
+      <TextField fx:id="tfQuantite" layoutX="147.0" layoutY="150.0" />
+      <TextField fx:id="tfPoids" layoutX="147.0" layoutY="201.0" />
+      <ComboBox fx:id="categorieBox" layoutX="151.0" layoutY="260.0" prefHeight="31.0" prefWidth="187.0" />
+      <Label layoutX="66.0" layoutY="265.0" text="Catégorie" />
+   </children>
+</AnchorPane>

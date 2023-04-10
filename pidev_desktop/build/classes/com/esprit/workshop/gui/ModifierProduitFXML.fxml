@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.ModifierProduitFXMLController">
+   <children>
+      <TextField fx:id="tfPoids" layoutX="157.0" layoutY="211.0" />
+      <TextField fx:id="tfQuantite" layoutX="157.0" layoutY="160.0" />
+      <TextField fx:id="tfPrix" layoutX="157.0" layoutY="106.0" />
+      <TextField fx:id="tfNom" layoutX="157.0" layoutY="52.0" />
+      <Label layoutX="78.0" layoutY="216.0" text="poids" />
+      <Label layoutX="69.0" layoutY="165.0" text="quantite" />
+      <Label layoutX="81.0" layoutY="111.0" text="prix" />
+      <Label layoutX="82.0" layoutY="57.0" text="nom" />
+      <Button fx:id="btnReset" layoutX="300.0" layoutY="283.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <Button fx:id="btnModifier_Produit" layoutX="119.0" layoutY="283.0" mnemonicParsing="false" onAction="#ModifierProduit" text="Modifier" />
+   </children>
+</AnchorPane>

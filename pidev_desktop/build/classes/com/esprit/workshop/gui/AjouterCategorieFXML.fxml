@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterCategorieFXMLController">
+   <children>
+      <Button fx:id="btnAjouter_Categorie" layoutX="75.0" layoutY="109.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
+      <Button fx:id="btnAfficher_Categorie" layoutX="180.0" layoutY="109.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
+      <Button fx:id="btnReset" layoutX="296.0" layoutY="109.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <TextField fx:id="tfNomCat" layoutX="151.0" layoutY="45.0" />
+      <Label layoutX="65.0" layoutY="50.0" text="Nom" />
+   </children>
+</AnchorPane>

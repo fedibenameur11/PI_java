@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="346.0" prefWidth="286.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherCategorieFXMLController">
+   <children>
+      <TableView fx:id="tableViewC" prefHeight="564.0" prefWidth="409.0">
+        <columns>
+          <TableColumn fx:id="nomCol" prefWidth="159.0" text="Nom" />
+            <TableColumn fx:id="colSuppression" prefWidth="137.0" text="Supprimer" />
+            <TableColumn fx:id="colModification" prefWidth="117.0" text="Modifier" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
