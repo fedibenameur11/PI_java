@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dynamics.pidev.gui.AfficherReponseController">
+   <children>
+      <Label fx:id="labelreponse" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="19.0" prefHeight="293.0" prefWidth="559.0" text="Label" />
+      <Button layoutX="169.0" layoutY="328.0" mnemonicParsing="false" text="Supprimer" textFill="#c61818" />
+      <Button layoutX="330.0" layoutY="328.0" mnemonicParsing="false" text="Modifier" />
+   </children>
+</AnchorPane>
