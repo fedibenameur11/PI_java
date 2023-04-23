@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/front/AfficherProduitFRONTFXMLController.java</file>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/services/ServiceProduit.java</file>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/AfficherCategorieFXMLController.java</file>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/AfficherProduitFXMLController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/front/AfficherCategorieFRONTFXML.fxml</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/entites/Produit.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/AjouterProduitFXMLController.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/ModifierProduitFXMLController.java</file>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/tests/NewFXMain.java</file>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/services/ServiceCategorie_prod.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/ModifierCategorieFXMLController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/front/AfficherCategorieFRONTFXMLController.java</file>
-            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/front/AfficherProduitFRONTFXML.fxml</file>
         </group>
     </open-files>
 </project-private>

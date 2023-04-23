@@ -7,6 +7,7 @@ package com.esprit.workshop.gui;
 
 import com.esprit.workshop.entites.Categorie_prod;
 import com.esprit.workshop.entites.Produit;
+import com.esprit.workshop.services.ServiceCategorie_prod;
 import com.esprit.workshop.services.ServiceProduit;
 import java.io.IOException;
 import java.net.URL;
@@ -16,9 +17,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,6 +47,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.util.List;
 import java.util.Properties;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -189,7 +196,10 @@ public class AfficherProduitFXMLController implements Initializable {
                                     //afficherProduits();
                                     tableView.getItems().remove(produit); // Supprimer le produit de la TableView
                                     //tableView.refresh(); 
+                                    //tableView.getItems().clear();
+                                    //afficherProduits();
                                 });
+
                                     Image image = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png");
 
                                     // Création de l'objet ImageView
@@ -268,8 +278,9 @@ public class AfficherProduitFXMLController implements Initializable {
                         stage.setScene(scene);
                         stage.showAndWait();
                         // Actualiser la table des produits après la modification
-                        //afficherProduits();
-                        tableView.getItems();
+                        tableView.getItems().clear();
+                        afficherProduits();
+                        //tableView.getItems();
                     } catch (IOException ex) {
                         Logger.getLogger(AfficherProduitFXMLController.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -500,6 +511,30 @@ public class AfficherProduitFXMLController implements Initializable {
 
     @FXML
     private void RechercherNom(ActionEvent event) throws Exception {
+            if (tfRechercheNom.getText().isEmpty() || tfPrixMin.getText().isEmpty() || tfPrixMax.getText().isEmpty() ) {
+            Alert al = new Alert(Alert.AlertType.WARNING);
+            al.setTitle("Erreur de donnee");
+            al.setContentText("Veuillez verifier les données !");
+            tfRechercheNom.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+            tfPrixMin.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+            tfPrixMax.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+                    
+            al.show();
+        }else{
+            if (!isFloat(tfPrixMin.getText())) {
+            Alert al = new Alert(Alert.AlertType.WARNING);
+            al.setTitle("Erreur de donnee");
+            al.setContentText("Le champ du prix ne doit contenir aucun caractere !");
+            al.show();
+        }
+            if (!isFloat(tfPrixMax.getText())) {
+            Alert al = new Alert(Alert.AlertType.WARNING);
+            al.setTitle("Erreur de donnee");
+            al.setContentText("Le champ du quantite ne doit contenir aucun caractere !");
+            al.show();
+        }
+            
+          
             Produit p = new Produit();
             ServiceProduit serviceProduit= new ServiceProduit();
             System.out.println(tfRechercheNom.getText());
@@ -508,10 +543,10 @@ public class AfficherProduitFXMLController implements Initializable {
             p.setNom(tfRechercheNom.getText().toLowerCase());
             if (!serviceProduit.controleProduit(p, prixMin, prixMax)){
                 tableView.getItems().clear();
-            Alert al = new Alert(Alert.AlertType.ERROR);
-            al.setTitle("Ce produit n'a pas été trouvé");
-            al.setContentText("Ce produit n'a pas été trouvé");
-            al.show();
+            Alert a2 = new Alert(Alert.AlertType.ERROR);
+            a2.setTitle("Ce produit n'a pas été trouvé");
+            a2.setContentText("Ce produit n'a pas été trouvé");
+            a2.show();
             }   
             else 
             {
@@ -520,7 +555,15 @@ public class AfficherProduitFXMLController implements Initializable {
          
             }
                 
-            }
+            }}
+    public boolean isFloat(String str) {
+    try {
+        Float.parseFloat(str);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+}
     
     private void RechercherNom2() throws Exception {
             Produit p = new Produit();
@@ -554,6 +597,9 @@ public class AfficherProduitFXMLController implements Initializable {
     }
     
      if (!lowQuantityProducts.isEmpty()) {
+        // Envoie un e-mail à l'utilisateur pour l'informer des produits à faible quantité
+        //sendLowQuantityProductsEmail(lowQuantityProducts);
+        //sendEmail();
         EnvoyerEmail test = new EnvoyerEmail();
         test.envoyer();
         // Mettre à jour la liste des produits pour afficher uniquement les produits à faible quantité
@@ -590,8 +636,7 @@ public class AfficherProduitFXMLController implements Initializable {
         System.out.println("Message_envoye");
         } catch (MessagingException e) {
         throw new RuntimeException(e);
-        }
-        }
+        } }
     
 
     
