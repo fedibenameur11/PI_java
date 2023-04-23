@@ -16,16 +16,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -159,6 +159,17 @@ public class UserInterfaceController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    
+    @FXML
+    private void Logout(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Scene homaepageScene = new Scene(root);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(homaepageScene);
+            appStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

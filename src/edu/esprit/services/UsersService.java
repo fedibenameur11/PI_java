@@ -6,17 +6,22 @@
 package edu.esprit.services;
 
 import edu.esprit.util.DataSource;
+import com.jfoenix.controls.JFXRadioButton;
 import java.sql.Connection;
 import edu.esprit.entities.users;
-import static java.sql.JDBCType.NULL;
+import java.io.File;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.PasswordField;
+import org.ini4j.Wini;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -114,6 +119,101 @@ public void modifier(int id, users u) {
             System.out.println(ex.getMessage());
         }
     }
+     /***********************************************Login Void *********************************************************************/
+    
+    public users getuserbyemailandpass(String email, String password) {
+    users user = null;
+    try {
+        String req = "SELECT * FROM users WHERE email = ?";
+        PreparedStatement psmt = cnx.prepareStatement(req);
+        psmt.setString(1, email);
+        ResultSet rs = psmt.executeQuery();
+        if (rs.next()) {
+            String hashedPassword = rs.getString("password");
+            if (password.equals(hashedPassword)) {
+                user = new users() {} ;
+                user.setId(rs.getInt("id"));
+                user.setNom(rs.getString("nom"));
+                user.setPrenom(rs.getString("prenom"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(hashedPassword);
+                user.setAdresse(rs.getString("adresse"));
+                user.setTelephone(rs.getInt("telephone"));
+                user.setCode_postale(rs.getInt("code_postale"));
+              
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return user;
+}
+    
+    /***********************************Create login files****************************************/
+        public void createiniFile(String path, String user, String pass) {
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            Wini wini = new Wini(new File(path));
+            wini.put("Login data", "Email", user);
+            wini.put("Login data", "Password", pass);
+
+            wini.store();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+        
+            public void readinifile(String path, TextField userid, PasswordField passid, JFXRadioButton remember_me) {
+        File file = new File(path);
+        if (file.exists()) {
+            try {
+                Wini wini = new Wini(new File(path));
+                String username = wini.get("Login data", "Email");
+                String password = wini.get("Login data", "Password");
+                if ((username != null && !username.equals("")) && (password != null && !password.equals(""))) {
+                    userid.setText(username);
+                    passid.setText(password);
+                    remember_me.setSelected(true);
+                }
+            }  catch (IOException ex) {
+                Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+            
+                     
+        public void readinifile(String path, TextField userid, PasswordField passid) throws IOException {
+        File file = new File(path);
+        if (file.exists()) {
+                Wini wini = new Wini(new File(path));
+                String username = wini.get("Login data", "Email");
+                String password = wini.get("Login data", "Password");
+                if ((username != null && !username.equals("")) && (password != null && !password.equals(""))) {
+                    userid.setText(username);
+                    passid.setText(password);
+                }
+        }
+    }
+
+        
+            public void Deleteinfo(String path, String user, String pass) {
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            Wini wini = new Wini(new File(path));
+            wini.remove("Login data", "Email");
+            wini.remove("Login data", "Password");
+            wini.store();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+        
 
 
 

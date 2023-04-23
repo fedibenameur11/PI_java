@@ -14,7 +14,7 @@ public class PI_dev extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/gui/UserInterface.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/gui/Login.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

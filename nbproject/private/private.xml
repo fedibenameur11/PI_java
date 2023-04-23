@@ -5,12 +5,18 @@
         <group>
             <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/services/UsersService.java</file>
             <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/ModifyUserController.java</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/util/DataSource.java</file>
             <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/pi_dev/PI_dev.java</file>
-            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/AddUserController.java</file>
-            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/UserInterfaceController.java</file>
-            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/entities/users.java</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/RegisterController.java</file>
             <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/UserInterface.fxml</file>
-            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/AddUser.fxml</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/Login.fxml</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/entities/login.java</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/Register.fxml</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/AddUserController.java</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/services/Services.java</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/UserInterfaceController.java</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/gui/LoginController.java</file>
+            <file>file:/C:/Users/wassim/OneDrive/Documents/NetBeansProjects/PI_dev/src/edu/esprit/entities/users.java</file>
         </group>
     </open-files>
 </project-private>
