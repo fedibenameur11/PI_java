@@ -66,8 +66,7 @@ public class AfficherCategorieFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Categories = FXCollections.observableArrayList();
-        afficherCategories();     /*****************/
-        //nomCol.setCellValueFactory(cellData -> cellData.getValue().nomProperty());
+        afficherCategories(); 
         nomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
         nomCol.setCellFactory(col -> {
         TableCell<Categorie_prod, String> cell = new TableCell<Categorie_prod, String>() {
@@ -334,11 +333,6 @@ public class AfficherCategorieFXMLController implements Initializable {
             System.out.println(tfRechercheNom.getText());
             p.setNom(tfRechercheNom.getText().toLowerCase());
             if (serviceCProduit.ControleNOM2(p)){
-            /*Alert al = new Alert(Alert.AlertType.ERROR);
-            al.setTitle("Ce produit n'a pas été trouvé");
-            al.setContentText("Ce produit n'a pas été trouvé");
-                
-            al.show();*/
             tableViewC.getItems().clear();
             afficherCategorie(p.getNom());
             }   

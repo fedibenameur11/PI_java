@@ -139,14 +139,14 @@ public class AfficherCategorieFRONTFXMLController implements Initializable {
                 
                 
                 
-                Image image2 = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/modifier.png");
+                Image image2 = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/search.JPG");
 
                                     // Création de l'objet ImageView
                                     ImageView imageView2 = new ImageView(image2);
 
                                     // Redimensionnement de l'image pour qu'elle s'adapte à la boîte de dialogue
-                                    imageView2.setFitWidth(20);
-                                    imageView2.setFitHeight(20);
+                                    imageView2.setFitWidth(40);
+                                    imageView2.setFitHeight(40);
                                 //btnSupprimer.setGraphic(new ImageView(new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png")));
                                 btn.setGraphic(imageView2);
                                 btn.getStyleClass().add("icon-only");

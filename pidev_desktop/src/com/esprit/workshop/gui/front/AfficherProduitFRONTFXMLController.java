@@ -161,70 +161,24 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
             {
                 btn.setOnAction(event -> {
                     //try {
-                        Alert a =new Alert(Alert.AlertType.ERROR);
-                    
-                    a.show();
-                        /*
-                        Produit produit = getTableView().getItems().get(getIndex());
-                        String productName = produit.getNom();
-                        double productPrice = produit.getPrix();
-                        int productQuantite = produit.getQuantite();
-                        double productPoids = produit.getPoids();
-    
-    try {
-        Connection conn = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
-        String sql = "SELECT id FROM produit WHERE nom = ? AND prix = ? AND quantite=? AND poids=?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, productName);
-        stmt.setDouble(2, productPrice);
-        stmt.setInt(3, productQuantite);
-        stmt.setDouble(4, productPoids);
-        ResultSet rs = stmt.executeQuery();
-        
-        if (rs.next()) {
-            int productId = rs.getInt("id");
-            produit.setId(productId);
-        }
-        
-        rs.close();
-        stmt.close();
-        conn.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-                        // Rediriger vers la vue de modification avec les informations du produit sélectionné
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierProduitFXML.fxml"));
-                        Parent root = loader.load();
-
-                        ModifierProduitFXMLController controller = loader.getController();
-                        controller.initData(produit);
-                        Scene scene = new Scene(root);
-                        Stage stage = new Stage();
-                        stage.initModality(Modality.APPLICATION_MODAL);
-                        stage.initStyle(StageStyle.DECORATED);
-                        stage.setScene(scene);
-                        stage.showAndWait();*/
+                        Alert a =new Alert(Alert.AlertType.CONFIRMATION);
+                        a.setTitle("Confiramtion d'achat");
+                        a.setContentText("Êtes-vous sûr d'ajouter ce produit au panier ?");                   
+                        a.show();                   
                         // Actualiser la table des produits après la modification
-                        //afficherProduits();
                         tableView.getItems();
-                    //} catch (IOException ex) {
-                      //  Logger.getLogger(AfficherProduitFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                    //}
+
                 });
-                Image image2 = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/modifier.png");
+                Image image2 = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/acheter.JPG");
 
                                     // Création de l'objet ImageView
-                                    ImageView imageView2 = new ImageView(image2);
+                ImageView imageView2 = new ImageView(image2);
 
                                     // Redimensionnement de l'image pour qu'elle s'adapte à la boîte de dialogue
-                                    imageView2.setFitWidth(20);
-                                    imageView2.setFitHeight(20);
-                                //btnSupprimer.setGraphic(new ImageView(new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png")));
-                                btn.setGraphic(imageView2);
-                                btn.getStyleClass().add("icon-only");
+                imageView2.setFitWidth(40);
+                imageView2.setFitHeight(40);
+                btn.setGraphic(imageView2);
+                btn.getStyleClass().add("icon-only");                                        
             }
 
             @Override
@@ -341,8 +295,6 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
                 String nomCategorie = resultSet2.getString("nom");
                 c = new Categorie_prod(idCategorie, nomCategorie);
             }
-              //Categorie_prod c = new Categorie_prod(catId, "");
-                //Categorie_prod c= (Categorie_prod) resultSet.getObject("cat");
                 Produit p = new Produit( nom, prix, quantite,poids,c);
                 produits.add(p);
             }
@@ -374,68 +326,65 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
         
         
     }
-void afficherProduit_CAT(Categorie_prod cc) {
-        Connection connexion = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
-            //connexion = MySQLConnexion.getInstance().getConnection();
-            String req = "SELECT * FROM `produit` where cat = ? ";
-            
-            preparedStatement = connexion.prepareStatement(req);
-            preparedStatement.setInt(1,cc.getId());
-            resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String nom = resultSet.getString("nom");
-                Float prix = resultSet.getFloat("prix");
-                int quantite = resultSet.getInt("quantite");
-                float poids = resultSet.getFloat("poids");
-                int idCategorie = resultSet.getInt("cat");
-                Categorie_prod c = null;
+        void afficherProduit_CAT(Categorie_prod cc) {
+            Connection connexion = null;
+            PreparedStatement preparedStatement = null;
+            ResultSet resultSet = null;
+            try {
+                connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
+                String req = "SELECT * FROM `produit` where cat = ? ";
 
-            // Récupération de la catégorie à partir de la base de données
-            String sql2 = "SELECT * FROM `categorie_prod` WHERE `id` = ?";
-            PreparedStatement preparedStatement2 = connexion.prepareStatement(sql2);
-            preparedStatement2.setInt(1, idCategorie);
-            ResultSet resultSet2 = preparedStatement2.executeQuery();
-            if (resultSet2.next()) {
-                String nomCategorie = resultSet2.getString("nom");
-                c = new Categorie_prod(idCategorie, nomCategorie);
-            }
-              //Categorie_prod c = new Categorie_prod(catId, "");
-                //Categorie_prod c= (Categorie_prod) resultSet.getObject("cat");
-                Produit p = new Produit( nom, prix, quantite,poids,c);
-                produits.add(p);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
+                preparedStatement = connexion.prepareStatement(req);
+                preparedStatement.setInt(1,cc.getId());
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String nom = resultSet.getString("nom");
+                    Float prix = resultSet.getFloat("prix");
+                    int quantite = resultSet.getInt("quantite");
+                    float poids = resultSet.getFloat("poids");
+                    int idCategorie = resultSet.getInt("cat");
+                    Categorie_prod c = null;
+
+                // Récupération de la catégorie à partir de la base de données
+                String sql2 = "SELECT * FROM `categorie_prod` WHERE `id` = ?";
+                PreparedStatement preparedStatement2 = connexion.prepareStatement(sql2);
+                preparedStatement2.setInt(1, idCategorie);
+                ResultSet resultSet2 = preparedStatement2.executeQuery();
+                if (resultSet2.next()) {
+                    String nomCategorie = resultSet2.getString("nom");
+                    c = new Categorie_prod(idCategorie, nomCategorie);
+                }
+                    Produit p = new Produit( nom, prix, quantite,poids,c);
+                    produits.add(p);
+                }
                 } catch (SQLException e) {
                     e.printStackTrace();
+                } finally {
+                    if (resultSet != null) {
+                        try {
+                            resultSet.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (preparedStatement != null) {
+                        try {
+                            preparedStatement.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (connexion != null) {
+                        try {
+                            connexion.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
+
+
             }
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connexion != null) {
-                try {
-                    connexion.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        
-        
-    }
 
     @FXML
     private void RechercherNom(ActionEvent event) throws Exception {
@@ -465,11 +414,6 @@ void afficherProduit_CAT(Categorie_prod cc) {
             System.out.println(tfRechercheNom.getText());
             p.setNom(tfRechercheNom.getText().toLowerCase());
             if (serviceProduit.ControleNOM2(p)){
-            /*Alert al = new Alert(Alert.AlertType.ERROR);
-            al.setTitle("Ce produit n'a pas été trouvé");
-            al.setContentText("Ce produit n'a pas été trouvé");
-                
-            al.show();*/
             tableView.getItems().clear();
             afficherProduit(p.getNom());
             }   

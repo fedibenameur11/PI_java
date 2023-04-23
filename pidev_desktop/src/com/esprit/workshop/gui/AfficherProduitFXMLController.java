@@ -7,7 +7,6 @@ package com.esprit.workshop.gui;
 
 import com.esprit.workshop.entites.Categorie_prod;
 import com.esprit.workshop.entites.Produit;
-import com.esprit.workshop.services.ServiceCategorie_prod;
 import com.esprit.workshop.services.ServiceProduit;
 import java.io.IOException;
 import java.net.URL;
@@ -17,14 +16,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,7 +41,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.util.List;
 import java.util.Properties;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -561,9 +554,6 @@ public class AfficherProduitFXMLController implements Initializable {
     }
     
      if (!lowQuantityProducts.isEmpty()) {
-        // Envoie un e-mail à l'utilisateur pour l'informer des produits à faible quantité
-        //sendLowQuantityProductsEmail(lowQuantityProducts);
-        //sendEmail();
         EnvoyerEmail test = new EnvoyerEmail();
         test.envoyer();
         // Mettre à jour la liste des produits pour afficher uniquement les produits à faible quantité
@@ -600,7 +590,8 @@ public class AfficherProduitFXMLController implements Initializable {
         System.out.println("Message_envoye");
         } catch (MessagingException e) {
         throw new RuntimeException(e);
-        } }
+        }
+        }
     
 
     

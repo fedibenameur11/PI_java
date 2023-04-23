@@ -6,19 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.esprit.workshop.gui.front.AfficherProduitFRONTFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="416.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.front.AfficherProduitFRONTFXMLController">
    <children>
       <Button fx:id="btnRechercher" layoutX="368.0" layoutY="29.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
       <TextField fx:id="tfRechercheNom" layoutX="87.0" layoutY="29.0" />
-      <TableView fx:id="tableView" layoutX="1.0" layoutY="81.0" prefHeight="308.0" prefWidth="592.0">
+      <TableView fx:id="tableView" layoutX="1.0" layoutY="81.0" prefHeight="308.0" prefWidth="658.0">
         <columns>
-          <TableColumn fx:id="nomColumn" prefWidth="137.0" text="nom" />
-          <TableColumn fx:id="prixColumn" prefWidth="88.0" text="prix" />
-            <TableColumn fx:id="quantiteColumn" prefWidth="92.0" text="quantite" />
-            <TableColumn fx:id="poidsColumn" prefWidth="77.0" text="poids" />
+          <TableColumn fx:id="nomColumn" prefWidth="125.0" text="nom" />
+          <TableColumn fx:id="prixColumn" prefWidth="93.0" text="prix" />
+            <TableColumn fx:id="quantiteColumn" prefWidth="89.0" text="quantite" />
+            <TableColumn fx:id="poidsColumn" prefWidth="87.0" text="poids" />
             <TableColumn fx:id="CategorieColumn" prefWidth="88.0" text="Categorie" />
-            <TableColumn fx:id="actionColumn" prefWidth="109.0" text="Action" />
+            <TableColumn fx:id="actionColumn" prefWidth="169.0" text="Action" />
         </columns>
       </TableView>
    </children>
