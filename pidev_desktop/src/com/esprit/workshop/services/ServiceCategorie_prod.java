@@ -6,6 +6,7 @@
 package com.esprit.workshop.services;
 
 import com.esprit.workshop.entites.Categorie_prod;
+import com.esprit.workshop.entites.Produit;
 import com.esprit.workshop.utils.MyConnexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +27,20 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
     public ServiceCategorie_prod() {
         cnx = MyConnexion.getInstance().getCnx();
     }
+    /*public static boolean ControleNOM(Categorie_prod u) throws SQLException {
+		String str = u.getNom().toLowerCase();
+                String req = "SELECT * FROM `categorie_prod` where nom="+u.getNom();
+                Statement st = cnx.createStatement();    
+                ResultSet rs = st.executeQuery(req);
+                if (rs.next()) {System.out.println("mrigl");return true;}
+                return false;
+                //System.out.println(str.length());
+                /*if (str.length() == 0)
+                    return false;
+		return true;
+	}*/
+    
+    
 
     @Override
     public void insertOne(Categorie_prod t) throws SQLException{
@@ -89,7 +104,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
     public List<Categorie_prod> selectAll() throws SQLException {
         List<Categorie_prod> temp = new ArrayList<>();
         
-        String req = "SELECT * FROM `categorie_prod`";
+        String req = "SELECT * FROM `categorie_prod` ";
         Statement st = cnx.createStatement();
         
         ResultSet rs = st.executeQuery(req);
@@ -107,6 +122,29 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
         return temp;
         
     }
+    public boolean ControleNOM(Categorie_prod u) throws SQLException {
+    String req = "SELECT * FROM `categorie_prod` WHERE nom=?";
+    PreparedStatement ps = cnx.prepareStatement(req);
+    ps.setString(1, u.getNom());
+    ResultSet rs = ps.executeQuery();
+    if (rs.next()) {
+        System.out.println("La catégorie existe déjà.");
+        return true;
+    }
+    return false;
+}
+    
+    public boolean ControleNOM2(Categorie_prod p) throws SQLException {
+        String req = "SELECT * FROM categorie_prod WHERE nom LIKE ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1, "%" + p.getNom() + "%");
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+        System.out.println("La categorie existe déjà.");
+        return true;
+        }
+        return false;
+        }
 
     
     

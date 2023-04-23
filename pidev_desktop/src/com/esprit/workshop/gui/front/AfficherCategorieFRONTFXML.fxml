@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.front.AfficherCategorieFRONTFXMLController">
+   <children>
+      <TextField fx:id="tfRechercheNom" layoutX="39.0" layoutY="61.0" onAction="#RechercherNom" />
+      <Button fx:id="btn_recherche" layoutX="269.0" layoutY="102.0" mnemonicParsing="false" onAction="#RechercherNom" text="Recherche" />
+      <TableView fx:id="tableViewC" layoutY="183.0" prefHeight="449.0" prefWidth="416.0">
+        <columns>
+          <TableColumn fx:id="nomCol" prefWidth="213.0" text="Nom" />
+          <TableColumn fx:id="ActionCol" prefWidth="195.0" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

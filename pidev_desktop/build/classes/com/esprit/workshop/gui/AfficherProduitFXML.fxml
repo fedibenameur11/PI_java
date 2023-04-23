@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="350.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherProduitFXMLController">
+<AnchorPane prefHeight="720.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherProduitFXMLController">
    <children>
-       <TableView fx:id="tableView" prefHeight="460.0" prefWidth="712.0">
+       <TableView fx:id="tableView" layoutX="42.0" layoutY="148.0" prefHeight="495.0" prefWidth="712.0">
            <columns>
                <TableColumn fx:id="nomColumn" prefWidth="109.0" text="nom" />
                <TableColumn fx:id="prixColumn" prefWidth="71.0" text="prix" />
@@ -20,5 +20,13 @@
             <TableColumn fx:id="colModification" prefWidth="119.0" text="Modifier" />
            </columns>
        </TableView>
+      <Button fx:id="btnRechercher" layoutX="529.0" layoutY="59.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
+      <TextField fx:id="tfRechercheNom" layoutX="178.0" layoutY="33.0" />
+      <Button fx:id="btn_verifier" layoutX="748.0" layoutY="651.0" mnemonicParsing="false" onAction="#Verifier_quantite" text="Verifier" />
+      <Label fx:id="tfNomm" layoutX="123.0" layoutY="38.0" text="Nom" />
+      <Label fx:id="LPrixMin" layoutX="24.0" layoutY="102.0" text="Prix Min" />
+      <TextField fx:id="tfPrixMin" layoutX="102.0" layoutY="97.0" prefHeight="31.0" prefWidth="94.0" />
+      <Label fx:id="LPrixMax" layoutX="254.0" layoutY="102.0" text="Prix Max" />
+      <TextField fx:id="tfPrixMax" layoutX="338.0" layoutY="97.0" prefHeight="31.0" prefWidth="94.0" />
    </children>
 </AnchorPane>

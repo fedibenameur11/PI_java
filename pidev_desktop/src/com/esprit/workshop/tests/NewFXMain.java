@@ -35,10 +35,12 @@ public class NewFXMain extends Application {
        
         try {
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterCategorieFXML.fxml"));
-            //Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherProduitFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherProduitFXML.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/ModifierProduitFXML.fxml"));
-            Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterProduitFXML.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterProduitFXML.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherCategorieFXML.fxml"));
+            
+            //Parent root = FXMLLoader.load(getClass().getResource("../gui/front/AfficherCategorieFRONTFXML.fxml"));
 
             
             

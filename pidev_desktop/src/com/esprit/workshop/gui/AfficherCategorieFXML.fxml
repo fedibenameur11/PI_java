@@ -8,12 +8,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="346.0" prefWidth="286.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherCategorieFXMLController">
    <children>
-      <TableView fx:id="tableViewC" prefHeight="564.0" prefWidth="409.0">
+      <TableView fx:id="tableViewC" layoutY="137.0" prefHeight="519.0" prefWidth="409.0">
         <columns>
           <TableColumn fx:id="nomCol" prefWidth="159.0" text="Nom" />
             <TableColumn fx:id="colSuppression" prefWidth="137.0" text="Supprimer" />
             <TableColumn fx:id="colModification" prefWidth="117.0" text="Modifier" />
         </columns>
       </TableView>
+      <TextField fx:id="tfRechercheNom" layoutX="18.0" layoutY="61.0" onAction="#RechercherNom" />
+      <Button fx:id="btn_recherche" layoutX="239.0" layoutY="92.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
    </children>
 </AnchorPane>

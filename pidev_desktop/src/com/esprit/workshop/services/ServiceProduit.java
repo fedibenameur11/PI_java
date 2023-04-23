@@ -47,7 +47,7 @@ public void insertOne(Produit t) throws SQLException {
     public void insertOne1(Produit t) throws SQLException {
     String req = "INSERT INTO `produit`(`nom`, `prix`, `quantite`, `poids`, `cat`) VALUES (?,?,?,?,?)";
 
-    PreparedStatement ps = cnx.prepareStatement(req);
+    PreparedStatement ps = cnx.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
 
     ps.setString(1, t.getNom());
     ps.setDouble(2, t.getPrix());
@@ -55,9 +55,24 @@ public void insertOne(Produit t) throws SQLException {
     ps.setDouble(4, t.getPoids());
     ps.setInt(5, t.getCat().getId());
 
-    ps.executeUpdate();    
+    int affectedRows=ps.executeUpdate();  
+    
+    if (affectedRows == 0) {
+    throw new SQLException("La création du produit a échoué, aucune ligne affectée.");
+}
+
+try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+    if (generatedKeys.next()) {
+        int id = generatedKeys.getInt(1);
+        t.setId(id);
+        System.out.println(id);
+    } else {
+        throw new SQLException("La création du produit a échoué, aucun ID auto-incrémenté retourné.");
+    }
     System.out.println("Produit ajouté !");
 }
+
+    }
 
     
     public void deleteOne(Produit t) throws SQLException{
@@ -107,13 +122,12 @@ public void insertOne(Produit t) throws SQLException {
 
 
     public void updateOne(Produit t,int id) throws SQLException {
-        String req = "UPDATE `produit` SET nom=?,prix=?, quantite=?, poids=? WHERE id=?";
+        String req = "UPDATE `produit` SET nom=?,prix=?, quantite=?, poids=? WHERE id="+id;
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, t.getNom());
         ps.setDouble(2,t.getPrix());
         ps.setInt(3,t.getQuantite());
         ps.setDouble(4,t.getPoids());       
-        ps.setInt(5, id);
         ps.executeUpdate();
     System.out.println("Produit mis à jour !");
     }
@@ -129,6 +143,61 @@ public void insertOne(Produit t) throws SQLException {
         ps.executeUpdate();
     System.out.println("Produit mis à jour !");
     }
+    
+    public boolean ControleNOM(Produit p) throws SQLException {
+        String req = "SELECT * FROM produit WHERE nom = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1, p.getNom());
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+        System.out.println("Le produit existe déjà.");
+        return true;
+        }
+        return false;
+        }
+    
+    public boolean ControleNOM2(Produit p) throws SQLException {
+        String req = "SELECT * FROM produit WHERE nom LIKE ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1,p.getNom() + "%");
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+        System.out.println("Le produit existe déjà.");
+        return true;
+        }
+        return false;
+        }
+
+    public boolean controlePrix(Produit p, Double prixMin, Double prixMax) throws SQLException {
+        String req = "SELECT * FROM produit WHERE prix=?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setDouble(1,p.getPrix());
+        ResultSet rs = ps.executeQuery();
+        if (rs.next() && prixMax>= p.getPrix() && p.getPrix()>=prixMin ) {
+        System.out.println("Le produit existe déjà.");
+        return true;
+        }
+        return false;
+
+    }
+   public boolean controleProduit(Produit p, Double prixMin, Double prixMax) throws SQLException {
+        if (p == null || prixMin == null || prixMax == null) {
+        throw new IllegalArgumentException("Les paramètres ne doivent pas être null.");
+        }
+        String req = "SELECT * FROM produit WHERE nom LIKE ? AND prix >= ? AND prix <= ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setString(1, "%"+ p.getNom() + "%");
+        ps.setDouble(2, prixMin);
+        ps.setDouble(3, prixMax);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+        System.out.println("Le produit existe déjà PRRR.");
+        return true;
+        }
+        return false;
+        }
+    
+    
 
     
     

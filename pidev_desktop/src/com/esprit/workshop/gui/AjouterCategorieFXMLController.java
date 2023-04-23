@@ -52,6 +52,7 @@ public class AjouterCategorieFXMLController implements Initializable {
             Alert al = new Alert(Alert.AlertType.WARNING);
             al.setTitle("Erreur de donnee");
             al.setContentText("Veuillez verifier les données !");
+            tfNomCat.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
             al.show();
         }else{
             Categorie_prod p = new Categorie_prod(tfNomCat.getText());

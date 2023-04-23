@@ -102,6 +102,11 @@ public boolean isNumber(String input) {
             Alert al = new Alert(Alert.AlertType.WARNING);
             al.setTitle("Erreur de donnee");
             al.setContentText("Veuillez verifier les données !");
+            tfNom.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+            tfPrix.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+            tfQuantite.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+            tfPoids.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+                    
             al.show();
         }else{
             if (!isFloat(tfPrix.getText())) {

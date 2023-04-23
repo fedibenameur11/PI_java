@@ -111,6 +111,7 @@ public boolean isNumber(String input) {
         produitSelectionne.setPrix(Double.parseDouble(tfPrix.getText()));
         produitSelectionne.setQuantite(Integer.parseInt(tfQuantite.getText()));
         produitSelectionne.setPoids(Double.parseDouble(tfPoids.getText()));
+        //produitSelectionne.setCat(Double.parseDouble(tfPoids.getText()));
         serviceProduit.updateOne(produitSelectionne);
         System.out.println("Produit modifié !");
         Stage stage = (Stage) btnModifier_Produit.getScene().getWindow();

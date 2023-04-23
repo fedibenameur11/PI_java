@@ -104,8 +104,9 @@ public class Produit {
     }
 
     public void setNom(String nom) {
-        this.nom.set(nom);
+        this.nom=new SimpleStringProperty(nom);
     }
+
 
     public void setPrix(double prix) {
         this.prix.set(prix);
