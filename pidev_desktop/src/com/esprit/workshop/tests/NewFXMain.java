@@ -37,13 +37,11 @@ public class NewFXMain extends Application {
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterCategorieFXML.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherProduitFXML.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/ModifierProduitFXML.fxml"));
-            Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterProduitFXML.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterProduitFXML.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherCategorieFXML.fxml"));
             
-            //Parent root = FXMLLoader.load(getClass().getResource("../gui/front/AfficherCategorieFRONTFXML.fxml"));
-
-            
-            
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/front/AfficherCategorieFRONTFXML.fxml"));
+       
             Scene scene = new Scene(root);
         
             primaryStage.setTitle("SportEra'S");
@@ -55,9 +53,7 @@ public class NewFXMain extends Application {
         
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
-        }
-        
-        
+        }        
     }
 
     /**

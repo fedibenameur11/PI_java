@@ -10,6 +10,9 @@ import com.esprit.workshop.entites.Produit;
 import com.esprit.workshop.gui.AfficherProduitFXMLController;
 import com.esprit.workshop.gui.ModifierProduitFXMLController;
 import com.esprit.workshop.services.ServiceProduit;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -40,6 +43,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import org.slf4j.LoggerFactory;
+
+
 
 /**
  * FXML Controller class
@@ -164,7 +172,11 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
                         Alert a =new Alert(Alert.AlertType.CONFIRMATION);
                         a.setTitle("Confiramtion d'achat");
                         a.setContentText("Êtes-vous sûr d'ajouter ce produit au panier ?");                   
-                        a.show();                   
+                        a.show();      
+                        EnvoyerSMS sms = new EnvoyerSMS();
+                        String numTel = "+21693661180"; // Numéro de téléphone de livreur à informer
+                        String messageContent = "Vous avez une autre livraison"; // Contenu du SMS à envoyer
+                        sms.send(numTel, messageContent);
                         // Actualiser la table des produits après la modification
                         tableView.getItems();
 
@@ -411,7 +423,7 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
     private void RechercherNom2() throws Exception {
             Produit p = new Produit();
             ServiceProduit serviceProduit= new ServiceProduit();
-            System.out.println(tfRechercheNom.getText());
+            //System.out.println(tfRechercheNom.getText());
             p.setNom(tfRechercheNom.getText().toLowerCase());
             if (serviceProduit.ControleNOM2(p)){
             tableView.getItems().clear();
@@ -424,6 +436,27 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
             }
                 
             }
+        public class EnvoyerSMS {
+             // Vos identifiants Twilio
+            private static final String ACCOUNT_SID = "AC38767579eefe22573a284013b7722509";
+            private static final String AUTH_TOKEN = "8b79d038ff50487636c9e38a9d586ec3";
 
+            // Numéro de téléphone Twilio
+            private static final String TWILIO_PHONE_NUMBER = "+16812029349";
+
+            public void send(String toPhoneNumber, String message) {
+                try {
+                    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                    Message twilioMessage = Message.creator(
+                            new PhoneNumber(toPhoneNumber),
+                            new PhoneNumber(TWILIO_PHONE_NUMBER),
+                            message).create();
+                    System.out.println("Message envoyé avec succées");
+                } catch (Exception ex) {
+                    System.out.println("Error sending SMS: " + ex.getMessage());
+                }
+
+        }
+        }
     
 }

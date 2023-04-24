@@ -191,7 +191,7 @@ try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
         ps.setDouble(3, prixMax);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
-        System.out.println("Le produit existe déjà PRRR.");
+        System.out.println("Le produit existe déjà .");
         return true;
         }
         return false;
