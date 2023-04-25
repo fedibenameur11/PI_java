@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package edu.esprit.gui;
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import edu.esprit.entities.users;
 import edu.esprit.services.UsersService;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -26,9 +29,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import edu.esprit.entities.login;
+import java.sql.SQLException;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+
+import javafx.scene.control.TextField;
 
 public class UserInterfaceController implements Initializable {
 
@@ -72,11 +87,23 @@ public class UserInterfaceController implements Initializable {
     private TableColumn<users, Integer> codePostaleColumn;
 
     private UsersService usersService;
+    @FXML
+    private Button excel;
+    @FXML
+    private Button logout;
+    @FXML
+    private Label username;
+    @FXML
+    private TextField searchField;
+    
+    private ObservableList<users> usersList=  FXCollections.observableArrayList();
+
+    private login Log_in = login.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         usersService = new UsersService();
-
+        username.setText(Log_in.getNom());
     idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
     passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
@@ -172,4 +199,114 @@ public class UserInterfaceController implements Initializable {
         }
     }
 
+    @FXML
+    private void excelfile(ActionEvent event) {
+        ArrayList<users> data = new ArrayList<users>();
+     
+       
+       try{  
+
+
+
+    //creating an instance of HSSFWorkbook class  
+//declare file name to be create   
+    String filename = "C:\\Users\\wassim\\OneDrive\\Documents\\NetBeansProjects\\PI_dev\\src\\edu\\esprit\\DonnéeUtilisateurs.XLS";  
+//creating an instance of HSSFWorkbook class  
+    HSSFWorkbook workbook = new HSSFWorkbook();  
+//invoking creatSheet() method and passing the name of the sheet to be created   
+    HSSFSheet sheet = workbook.createSheet("User Details");   
+//creating the 0th row using the createRow() method  
+    HSSFRow rowhead = sheet.createRow((short)0);  
+//creating cell by using the createCell() method and setting the values to the cell by using the setCellValue() method  
+    rowhead.createCell(0).setCellValue("Nom");  
+    rowhead.createCell(1).setCellValue("Prenom");  
+    rowhead.createCell(2).setCellValue("Email");  
+    rowhead.createCell(3).setCellValue("Mot de passe");  
+    rowhead.createCell(4).setCellValue("Numéro de téléphone");  
+
+    ObservableList<users> userlist = FXCollections.observableArrayList(usersTable.getItems());
+             
+                int rownum = 1;
+                for (users USER : userlist) {
+                HSSFRow row = sheet.createRow(rownum++);  
+                HSSFRow headerRow = sheet.createRow(0);
+                row.createCell(0).setCellValue(USER.getNom());
+                row.createCell(1).setCellValue(USER.getPrenom());
+                row.createCell(2).setCellValue(USER.getEmail());
+                row.createCell(3).setCellValue(USER.getAdresse());
+                row.createCell(4).setCellValue(USER.getCode_postale());
+                row.createCell(4).setCellValue(USER.getTelephone());
+                }
+            
+                FileOutputStream fileOut = new FileOutputStream(filename);  
+                workbook.write(fileOut);  
+            
+                //closing the Stream  
+                fileOut.close();  
+                //closing the workbook  
+                workbook.close();  
+                //prints the message on the console  
+                Alert a = new Alert(Alert.AlertType.INFORMATION, "Excel File Has Been Generated Successfully", ButtonType.OK);
+                a.showAndWait();
+                }   
+                catch (Exception e)   
+                {  
+                e.printStackTrace();  
+                }                                 
+        
+    }
+    
+    @FXML
+    private void reherche() throws SQLException{
+    UsersService service = new UsersService();
+    ObservableList<users> usersList = FXCollections.observableArrayList();
+    usersList.addAll(service.getAll());
+        
+        FilteredList<users> filteredData = new FilteredList<>(usersList, b -> true);
+      
+	searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+		filteredData.setPredicate(g -> {
+				if (newValue == null || newValue.isEmpty()) {
+				return true;
+			}
+			String lowerCaseFilter = newValue.toLowerCase();
+
+				if (g.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+                                        
+				} 
+                                else if (g.getPrenom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+				        return true;
+                                }else if (g.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                                  return true;
+                                
+                                
+                                        
+                                }else if (g.getAdresse().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+				        return true;
+                                        
+                                } else if (Integer.toString(g.getTelephone()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                                  return true;
+                                } else if (Integer.toString(g.getCode_postale()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                                  return true;
+                                
+				}
+                                 
+				else
+					return false;
+			
+                        });
+		});
+		    SortedList<users> sortedData = new SortedList<>(filteredData);
+		    sortedData.comparatorProperty().bind(usersTable.comparatorProperty());
+		usersTable.setItems(sortedData);
+    
+        
+  }
+
+
+    
+                           
+        
+    
 }

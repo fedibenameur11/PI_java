@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,6 +17,7 @@
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="372.0" prefWidth="572.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
          <children>
+            <Label fx:id="username" prefHeight="17.0" prefWidth="80.0" text="Label" />
             <Label prefHeight="62.0" prefWidth="333.0" text="Liste des utilisateurs" textFill="#070707">
                <font>
                   <Font name="Century Gothic" size="24.0" />
@@ -46,6 +48,12 @@
                      <font>
                         <Font name="Berlin Sans FB Bold" size="12.0" />
                      </font></Button>
+                  <Button fx:id="excel" layoutX="382.0" layoutY="10.0" mnemonicParsing="false" onAction="#excelfile" style="-fx-background-color: black; -fx-text-fill: white;" text="Excel">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="searchField" layoutX="855.0" layoutY="139.0" onAction="#reherche" />
                </children>
             </HBox>
             <TableView fx:id="usersTable" prefHeight="200.0" prefWidth="572.0">

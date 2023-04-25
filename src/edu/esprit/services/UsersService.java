@@ -6,7 +6,6 @@
 package edu.esprit.services;
 
 import edu.esprit.util.DataSource;
-import com.jfoenix.controls.JFXRadioButton;
 import java.sql.Connection;
 import edu.esprit.entities.users;
 import java.io.File;
@@ -22,6 +21,7 @@ import org.ini4j.Wini;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TextField;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -43,7 +43,7 @@ public class UsersService {
         ps.setString(3, u.getNom());
         ps.setString(4, u.getPrenom());
         ps.setString(1, u.getEmail());
-        ps.setString(2, u.getPassword());
+        ps.setString(2, BCrypt.hashpw(u.getPassword(), BCrypt.gensalt() ));
         ps.setString(5, u.getAdresse());
         ps.setInt(6, u.getTelephone());
         ps.setInt(7, u.getCode_postale());
@@ -166,23 +166,7 @@ public void modifier(int id, users u) {
         }
     }
         
-            public void readinifile(String path, TextField userid, PasswordField passid, JFXRadioButton remember_me) {
-        File file = new File(path);
-        if (file.exists()) {
-            try {
-                Wini wini = new Wini(new File(path));
-                String username = wini.get("Login data", "Email");
-                String password = wini.get("Login data", "Password");
-                if ((username != null && !username.equals("")) && (password != null && !password.equals(""))) {
-                    userid.setText(username);
-                    passid.setText(password);
-                    remember_me.setSelected(true);
-                }
-            }  catch (IOException ex) {
-                Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+            
             
                      
         public void readinifile(String path, TextField userid, PasswordField passid) throws IOException {
