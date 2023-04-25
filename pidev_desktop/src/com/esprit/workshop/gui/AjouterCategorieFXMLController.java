@@ -7,6 +7,12 @@ package com.esprit.workshop.gui;
 
 import com.esprit.workshop.entites.Categorie_prod;
 import com.esprit.workshop.services.ServiceCategorie_prod;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.oned.Code128Writer;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,8 +25,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -37,6 +45,8 @@ public class AjouterCategorieFXMLController implements Initializable {
     private Button btnAfficher_Categorie;
     @FXML
     private Button btnReset;
+    @FXML
+    private TextField br_data;
 
     /**
      * Initializes the controller class.
@@ -60,15 +70,53 @@ public class AjouterCategorieFXMLController implements Initializable {
             
             try {
                 sp.insertOne(p);
-            } catch (SQLException ex) {
-                Alert al = new Alert(Alert.AlertType.ERROR);
-                al.setTitle("Erreur de donnee");
-                al.setContentText(ex.getMessage());
-                al.show();
+                String data = br_data.getText();
+            if (data == null || data.trim().isEmpty()) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Aucune donnée saisie");
+                alert.setContentText("Veuillez saisir une valeur pour générer le code-barres");
+                alert.showAndWait();
+                return;
             }
-            
-        }
-    }
+            try {
+                // Créer un code-barres Code 128 à partir des données saisies
+                Code128Writer writer = new Code128Writer();
+                BitMatrix bitMatrix = writer.encode(data, BarcodeFormat.CODE_128, 400, 200);
+
+                // Écrire le code-barres dans un fichier
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Enregistrer le code-barres");
+                fileChooser.setInitialFileName("code-barres.png");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("PNG", "*.png")
+                );
+                File file = fileChooser.showSaveDialog(new Stage());
+                if (file != null) {
+                    MatrixToImageWriter.writeToFile(bitMatrix, "PNG", file);
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Succès");
+                    alert.setHeaderText("Code-barres généré avec succès");
+                    alert.setContentText("Le code-barres a été enregistré dans le fichier:\n" + file.getAbsolutePath());
+                    alert.showAndWait();
+                }
+            } catch (WriterException | IOException e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Impossible de générer le code-barres");
+                alert.setContentText("Une erreur s'est produite lors de la génération du code-barres:\n" + e.getMessage());
+                alert.showAndWait();
+            }
+                    } catch (SQLException ex) {
+                        Alert al = new Alert(Alert.AlertType.ERROR);
+                        al.setTitle("Erreur de donnee");
+                        al.setContentText(ex.getMessage());
+                        al.show();
+                    }
+
+                }
+            }
+
 
     @FXML
     private void AfficherCategorie(ActionEvent event) {

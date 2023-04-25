@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.esprit.workshop.gui.ModifierCategorieFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.ModifierCategorieFXMLController">
    <children>
       <Label layoutX="115.0" layoutY="100.0" text="Nom" />
       <TextField fx:id="tfNomCat" layoutX="194.0" layoutY="95.0" />

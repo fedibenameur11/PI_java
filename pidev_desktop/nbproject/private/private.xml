@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/front/AfficherProduitFRONTFXMLController.java</file>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/services/ServiceProduit.java</file>
+            <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/gui/AjouterProduitFXMLController.java</file>
             <file>file:/C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/tests/NewFXMain.java</file>
         </group>
     </open-files>

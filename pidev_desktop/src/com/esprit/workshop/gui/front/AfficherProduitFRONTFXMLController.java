@@ -45,6 +45,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import java.util.Comparator;
+import javafx.scene.control.ComboBox;
 import org.slf4j.LoggerFactory;
 
 
@@ -76,6 +78,8 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
     private TableColumn<Produit, Categorie_prod> CategorieColumn;
     @FXML
     private TableColumn<Produit, Void> actionColumn;
+    @FXML
+    private ComboBox<String> triComboBox;
 
     /**
      * Initializes the controller class.
@@ -213,6 +217,23 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
                 Logger.getLogger(AfficherProduitFXMLController.class.getName()).log(Level.SEVERE, null, ex);
             }
             });
+        
+        
+        triComboBox.setItems(FXCollections.observableArrayList("Trier par nom","Trier par prix"));
+        //triComboBox.setItems(FXCollections.observableArrayList());
+        triComboBox.setOnAction(event -> {
+            String selectedItem = (String) triComboBox.getSelectionModel().getSelectedItem();
+            if (selectedItem.equals("Trier par nom")) {
+                ObservableList<Produit> items = tableView.getItems();
+                items.sort(Comparator.comparing(Produit::getNom));
+                tableView.setItems(items);
+            } else if (selectedItem.equals("Trier par prix")) {
+                ObservableList<Produit> items = tableView.getItems();
+                items.sort(Comparator.comparingDouble(Produit::getPrix));
+                tableView.setItems(items);
+            }
+        });
+        
         tableView.setItems(produits);
     }   
 

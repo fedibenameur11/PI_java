@@ -8,10 +8,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterCategorieFXMLController">
    <children>
-      <Button fx:id="btnAjouter_Categorie" layoutX="75.0" layoutY="109.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
-      <Button fx:id="btnAfficher_Categorie" layoutX="180.0" layoutY="109.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
-      <Button fx:id="btnReset" layoutX="296.0" layoutY="109.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
-      <TextField fx:id="tfNomCat" layoutX="151.0" layoutY="45.0" />
-      <Label layoutX="65.0" layoutY="50.0" text="Nom" />
+      <Button fx:id="btnAjouter_Categorie" layoutX="76.0" layoutY="149.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
+      <Button fx:id="btnAfficher_Categorie" layoutX="181.0" layoutY="149.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
+      <Button fx:id="btnReset" layoutX="296.0" layoutY="149.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <TextField fx:id="tfNomCat" layoutX="151.0" layoutY="14.0" />
+      <Label layoutX="76.0" layoutY="19.0" text="Nom" />
+      <TextField fx:id="br_data" layoutX="151.0" layoutY="71.0" />
+      <Label fx:id="tfBarCode" layoutX="64.0" layoutY="76.0" text="BarCode" />
    </children>
 </AnchorPane>

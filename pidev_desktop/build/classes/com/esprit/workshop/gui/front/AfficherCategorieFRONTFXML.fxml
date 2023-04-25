@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.front.AfficherCategorieFRONTFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="407.0" stylesheets="@css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.front.AfficherCategorieFRONTFXMLController">
    <children>
       <TextField fx:id="tfRechercheNom" layoutX="39.0" layoutY="61.0" onAction="#RechercherNom" />
       <Button fx:id="btn_recherche" layoutX="269.0" layoutY="102.0" mnemonicParsing="false" onAction="#RechercherNom" text="Recherche" />
