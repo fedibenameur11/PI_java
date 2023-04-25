@@ -34,7 +34,7 @@ public class NewFXMain extends Application{
            
         try {
             
-          Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherSalle1.fxml"));
+          Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherSalle.fxml"));
             
            Scene scene = new Scene(root);
         

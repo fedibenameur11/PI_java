@@ -5,6 +5,7 @@
 package com.dynamics.pidev.services;
 
 import com.dynamics.pidev.entites.abonnementSalle;
+import com.dynamics.pidev.entites.Salle;
 import com.dynamics.pidev.utils.MyConnexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -101,7 +106,53 @@ public class AbonnementService implements IService<abonnementSalle>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    
-    
+ 
+
+    @Override
+    public ArrayList<abonnementSalle> search1(String duree_abonnement) {
+        ArrayList<abonnementSalle> abonnements = new ArrayList<>();
+    try {
+        String req = "SELECT * FROM abonnement_salle WHERE duree_abonnement LIKE ?";
+        PreparedStatement statement = cnx.prepareStatement(req);
+        statement.setString(1, "%" + duree_abonnement + "%");
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {                
+            abonnementSalle u = new abonnementSalle();
+            u.setId(rs.getInt(1));
+            u.setDuree_abonnement(rs.getString(2));
+            
+               
+            abonnements.add(u);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(SalleService.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return abonnements;
 }
+
+  //  @Override
+  //  public ArrayList<abonnementSalle> searchByName(String nom_salle) {
+   //     throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    //}
+
+    @Override
+    public List<Salle> sortSalle(List<Salle> salles) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<abonnementSalle> sortAbonnement(List<abonnementSalle> abonnements) {
+       Collections.sort(abonnements, new Comparator<abonnementSalle>() {
+        public int compare(abonnementSalle a1, abonnementSalle a2) {
+            return a1.getDuree_abonnement().compareTo(a2.getDuree_abonnement());
+        }
+    });
+    return abonnements;
+    }
+    
+ 
+
+
+    }
+
 

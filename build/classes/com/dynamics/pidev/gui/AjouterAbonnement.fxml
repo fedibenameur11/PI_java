@@ -15,7 +15,7 @@
    <children>
       <Label layoutX="615.0" layoutY="336.0" text="durée abonnement :" />
       <TextField fx:id="tfduree" layoutX="798.0" layoutY="332.0" />
-      <Button fx:id="btnenv" layoutX="735.0" layoutY="391.0" mnemonicParsing="false" text="envoyer" />
+      <Button fx:id="btnenv" layoutX="810.0" layoutY="391.0" mnemonicParsing="false" text="envoyer" />
       <ImageView fitHeight="85.0" fitWidth="92.0" layoutX="25.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logoo.png" />
@@ -33,5 +33,6 @@
             <Image url="@../images/sport1.jpg" />
          </image>
       </ImageView>
+      <Button layoutX="723.0" layoutY="391.0" mnemonicParsing="false" onAction="#switchButton" text="retour" />
    </children>
 </AnchorPane>

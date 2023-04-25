@@ -32,6 +32,8 @@ public class ModifierAbonnement2Controller implements Initializable {
     private TextField dureeAbonnementField;
     
     private AbonnementService abonnementService;
+    private final AbonnementHolder holder =AbonnementHolder.getInstance();
+    private abonnementSalle CurrentAbonnement =holder.getAbonnement();
     
     @FXML 
         void switchButton(ActionEvent event) throws IOException {
@@ -41,42 +43,95 @@ public class ModifierAbonnement2Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        abonnementService = new AbonnementService();
-    }    
+    
+    
+    
     
     @FXML
-    public void modifierAbonnement() {
-        try {
-            int id = Integer.parseInt(idField.getText());
-            String dureeAbonnement = dureeAbonnementField.getText();
-            
-            abonnementSalle abonnement = new abonnementSalle();
-            abonnement.setDuree_abonnement(dureeAbonnement);
-            
-            abonnementService.updateOne(abonnement, id);
-            
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Modification d'abonnement");
-            alert.setHeaderText(null);
-            alert.setContentText("L'abonnement a été modifié avec succès !");
-            alert.showAndWait();
-            
-        } catch (NumberFormatException e) {
+public void modifierAbonnement() {
+    try {
+        String dureeAbonnement = dureeAbonnementField.getText();
+        if (dureeAbonnement.isEmpty()) { // Vérifier si le champ est vide
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir les champs !");
             alert.showAndWait();
-        } catch (SQLException e) {
+            return;
+        }
+        if (dureeAbonnement.length() > 10) { // Vérifier la longueur de la chaîne de caractères
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Une erreur est survenue lors de la modification de l'abonnement !");
+            alert.setContentText("La durée de l'abonnement ne doit pas dépasser 10 caractères !");
             alert.showAndWait();
+            return;
         }
+        CurrentAbonnement.setDuree_abonnement(dureeAbonnement);
+        AbonnementService service = new AbonnementService();
+        service.updateOne(CurrentAbonnement, CurrentAbonnement.getId());
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Modification d'abonnement");
+        alert.setHeaderText(null);
+        alert.setContentText("L'abonnement a été modifié avec succès !");
+        alert.showAndWait();
+
+    } catch (SQLException e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("Une erreur est survenue lors de la modification de l'abonnement !");
+        alert.showAndWait();
     }
+}
+
+    
+
+      //  try {
+            //int id = Integer.parseInt(idField.getText());
+        //    String dureeAbonnement = dureeAbonnementField.getText();
+          //  CurrentAbonnement.setDuree_abonnement(dureeAbonnement);
+            //AbonnementService service = new AbonnementService();
+           // service.updateOne(CurrentAbonnement, CurrentAbonnement.getId());
+            
+          //  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          //  alert.setTitle("Modification d'abonnement");
+          //  alert.setHeaderText(null);
+           // alert.setContentText("L'abonnement a été modifié avec succès !");
+           // alert.showAndWait();
+            
+      //  } catch (NumberFormatException e) {
+        //    Alert alert = new Alert(Alert.AlertType.ERROR);
+          //  alert.setTitle("Erreur");
+   //  alert.setHeaderText(null);
+     //       alert.setContentText("Veuillez remplir les champs !");
+       //     alert.showAndWait();
+      
+       // } catch (SQLException e) {
+        //    Alert alert = new Alert(Alert.AlertType.ERROR);
+          //  alert.setTitle("Erreur");
+          //  alert.setHeaderText(null);
+          //  alert.setContentText("Une erreur est survenue lors de la modification de l'abonnement !");
+          //  alert.showAndWait();
+       // }
+   // }
+    
+    public void initData(abonnementSalle abonnement) {
+    CurrentAbonnement = abonnement;
+    holder.setAbonnement(CurrentAbonnement);
+  
+    dureeAbonnementField.setText(CurrentAbonnement.getDuree_abonnement());
+    
+    
+}
+    
+            @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        
+     this.initData(CurrentAbonnement);
+        
+    } 
     
 }
 

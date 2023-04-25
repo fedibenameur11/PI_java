@@ -4,20 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
 <AnchorPane id="AnchorPane" prefHeight="732.0" prefWidth="1154.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dynamics.pidev.gui.AfficherAbonnement2Controller">
-   <TableView fx:id="table" layoutX="487.0" layoutY="197.0" prefHeight="318.0" prefWidth="498.0">
+   <TableView fx:id="table" layoutX="487.0" layoutY="198.0" prefHeight="318.0" prefWidth="498.0">
       <columns>
          <TableColumn fx:id="dureeColumn" prefWidth="499.0" text="durée abonnement" />
          
       </columns>
    </TableView>
    <Button layoutX="581.0" layoutY="572.0" mnemonicParsing="false" onAction="#switchButton" text="ajouter" />
-   <Button layoutX="691.0" layoutY="572.0" mnemonicParsing="false" onAction="#switchButton1" text="modifier" />
+   <Button layoutX="691.0" layoutY="572.0" mnemonicParsing="false" onAction="#modifierAbonnement" text="modifier" />
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../images/logoo.png" />
@@ -65,4 +66,7 @@
       </image>
    </ImageView>
    <Button fx:id="deleteButton" layoutX="814.0" layoutY="572.0" mnemonicParsing="false" onAction="#deleteAbonnement" text="supprimer" />
+   <TextField fx:id="searchField" layoutX="685.0" layoutY="149.0" />
+   <Button fx:id="searchButton" layoutX="892.0" layoutY="149.0" mnemonicParsing="false" onAction="#searchAbonnements" text="rechercher" />
+   <Button layoutX="487.0" layoutY="149.0" mnemonicParsing="false" onAction="#sortAbonnement" text="Trier" />
 </AnchorPane>

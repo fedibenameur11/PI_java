@@ -5,6 +5,7 @@
 package com.dynamics.pidev.services;
 
 import com.dynamics.pidev.entites.Salle;
+import com.dynamics.pidev.entites.abonnementSalle;
 import com.dynamics.pidev.utils.MyConnexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -172,9 +177,54 @@ public class SalleService implements IService<Salle>{
 
 
 
+//@Override
+//public ArrayList<Salle> searchByName(String nom_salle) {
+  //  ArrayList<Salle> salles = new ArrayList<>();
+   // try {
+     //   String req = "SELECT * FROM salle WHERE nom_salle LIKE ?";
+       // PreparedStatement statement = cnx.prepareStatement(req);
+       // statement.setString(1, "%" + nom_salle + "%");
+       // ResultSet rs = statement.executeQuery();
+       // while (rs.next()) {                
+         //   Salle u = new Salle();
+          //  u.setId(rs.getInt(1));
+          //  u.setNom_salle(rs.getString(2));
+          //  u.setAdresse_salle(rs.getString(3));
+          //  u.setNum_telephone(rs.getInt(4));
+          //  u.setCodepostal(rs.getInt(5));
+          //  u.setVille(rs.getString(6));
+          //  u.setPrix_abonnement(rs.getInt(7));
+               
+          //  salles.add(u);
+       // }
+   // } catch (SQLException ex) {
+     //   Logger.getLogger(SalleService.class.getName()).log(Level.SEVERE, null, ex);
+   // }
+   // return salles;
+//}
+
+  @Override
+    public ArrayList<Salle> search1(String duree_abonnement) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   }
+
+   @Override
+public List<Salle> sortSalle(List<Salle> salles) {
+    Collections.sort(salles, new Comparator<Salle>() {
+        
+        public int compare(Salle s1, Salle s2) {
+            return s1.getNom_salle().compareTo(s2.getNom_salle());
+        }
+    });
+    return salles;
+} 
 
 
-    
+
+    @Override
+    public List<abonnementSalle> sortAbonnement(List<abonnementSalle> abonnements) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
     

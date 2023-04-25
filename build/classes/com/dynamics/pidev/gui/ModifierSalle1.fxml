@@ -10,23 +10,18 @@
 
 <AnchorPane prefHeight="676.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dynamics.pidev.gui.ModifierSalle1Controller">
    <children>
-      
-      <Label layoutX="542.0" layoutY="179.0" text="ID:" />
       <Label layoutX="541.0" layoutY="225.0" text="nom:" />
       <Label layoutX="541.0" layoutY="268.0" text="adresse:" />
       <Label layoutX="541.0" layoutY="313.0" text="numéro:" />
       <Label layoutX="541.0" layoutY="356.0" text="codepostal:" />
       <Label layoutX="542.0" layoutY="398.0" text="ville:" />
       <Label layoutX="541.0" layoutY="444.0" text="prix:" />
-      <TextField fx:id="idf" layoutX="656.0" layoutY="174.0" />
       <TextField fx:id="nomf" layoutX="656.0" layoutY="220.0" />
       <TextField fx:id="adressef" layoutX="656.0" layoutY="263.0" />
       <TextField fx:id="numf" layoutX="656.0" layoutY="308.0" />
       <TextField fx:id="codef" layoutX="656.0" layoutY="351.0" />
       <TextField fx:id="villef" layoutX="656.0" layoutY="393.0" />
       <TextField fx:id="prixf" layoutX="656.0" layoutY="439.0" />
-      <Button layoutX="711.0" layoutY="550.0" mnemonicParsing="false" onAction="#modifierSalle" text="modifier" />
-      <Button layoutX="589.0" layoutY="550.0" mnemonicParsing="false" onAction="#switchButton" text="retour" />
        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="80.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../images/logoo.png" />
@@ -73,5 +68,7 @@
          <Image url="@../images/forum.png" />
       </image>
    </ImageView>
+      <Button layoutX="604.0" layoutY="518.0" mnemonicParsing="false" onAction="#switchButton" text="retour" />
+      <Button layoutX="750.0" layoutY="518.0" mnemonicParsing="false" onAction="#modifierSalle" text="modifier" />
    </children>
 </AnchorPane>

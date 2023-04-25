@@ -72,6 +72,11 @@ public class AjouterAbonnement2Controller implements Initializable {
 
         try {
             sp.insertOne1(p);
+                   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Ajout d'un abonnement");
+            alert.setHeaderText(null);
+            alert.setContentText("Abonnement ajouté avec succés !");
+            alert.showAndWait();
         } catch (SQLException ex) {
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setTitle("Erreur de donnée");

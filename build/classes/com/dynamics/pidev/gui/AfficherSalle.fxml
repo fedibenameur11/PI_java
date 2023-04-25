@@ -13,8 +13,8 @@
         <URL value="@salle.css" />
     </stylesheets>
    <children>
-      <ListView fx:id="ListViewSalles" layoutX="776.0" layoutY="321.0" prefHeight="175.0" prefWidth="197.0" />
-      <Button fx:id="BtnId" layoutX="832.0" layoutY="508.0" mnemonicParsing="false" onAction="#switchButton" text="s'abonner" />
+      <ListView fx:id="ListViewSalles" layoutX="772.0" layoutY="312.0" prefHeight="198.0" prefWidth="239.0" />
+      <Button fx:id="BtnId" layoutX="849.0" layoutY="525.0" mnemonicParsing="false" onAction="#switchButton" text="s'abonner" />
       <ImageView fitHeight="85.0" fitWidth="92.0" layoutX="25.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logoo.png" />
@@ -27,24 +27,9 @@
       <Label layoutX="891.0" layoutY="38.0" text="Salle" textFill="#e39827" />
       <Label layoutX="991.0" layoutY="38.0" prefHeight="21.0" prefWidth="49.0" text="Forum" />
       <Label layoutX="289.0" layoutY="130.0" style="-fx-font-size: 45px;" text="Bienvenue dans nos salles" textFill="#e39827" />
-      <ImageView fitHeight="138.0" fitWidth="264.0" layoutX="102.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/california.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="165.0" fitWidth="264.0" layoutX="406.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/arena.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="148.0" fitWidth="263.0" layoutX="103.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="406.0" fitWidth="553.0" layoutX="98.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gym-box.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="138.0" fitWidth="321.0" layoutX="406.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/club.jpg" />
          </image>
       </ImageView>
    </children>

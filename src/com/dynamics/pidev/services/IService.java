@@ -5,7 +5,10 @@
  */
 package com.dynamics.pidev.services;
 
+import com.dynamics.pidev.entites.Salle;
+import com.dynamics.pidev.entites.abonnementSalle;
 import java.sql.SQLException;
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.util.List;
 
@@ -26,4 +29,8 @@ public interface IService<T> {
     
     List<String> selectAllNames() throws SQLException;
     
+    //ArrayList<T> searchByName(String nom_salle);
+    ArrayList<T> search1(String duree_abonnement);
+    List<Salle> sortSalle(List<Salle> salles);
+    List<abonnementSalle> sortAbonnement(List<abonnementSalle> abonnements);
 }
