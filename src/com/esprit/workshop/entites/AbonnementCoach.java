@@ -25,12 +25,22 @@ public class AbonnementCoach {
     public AbonnementCoach() {
     }
 
-    public AbonnementCoach(User coach_id, User client_id, int duree, Date dateDebut, Date dateFin, int statut) {
-        this.coach_id = new SimpleObjectProperty<>(coach_id);
-        this.client_id = new SimpleObjectProperty<>(client_id);
+    public AbonnementCoach(int id,User coach_id, User client_id, int duree, Date dateDebut, Date dateFin, int statut) {
+        this.id = new SimpleIntegerProperty(id);
+        this.coach_id = new SimpleObjectProperty<User>(coach_id);
+        this.client_id = new SimpleObjectProperty<User>(client_id);
         this.duree = new SimpleIntegerProperty(duree);
-        this.dateDebut = new SimpleObjectProperty<>(dateDebut);
-        this.dateFin = new SimpleObjectProperty<>(dateFin);
+        this.dateDebut = new SimpleObjectProperty<Date>(dateDebut);
+        this.dateFin = new SimpleObjectProperty<Date>(dateFin);
+        this.statut = new SimpleIntegerProperty(statut);
+    }
+    
+    public AbonnementCoach(User coach_id, User client_id, int duree, Date dateDebut, Date dateFin, int statut) {
+        this.coach_id = new SimpleObjectProperty<User>(coach_id);
+        this.client_id = new SimpleObjectProperty<User>(client_id);
+        this.duree = new SimpleIntegerProperty(duree);
+        this.dateDebut = new SimpleObjectProperty<Date>(dateDebut);
+        this.dateFin = new SimpleObjectProperty<Date>(dateFin);
         this.statut = new SimpleIntegerProperty(statut);
     }
     

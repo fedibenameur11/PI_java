@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -58,7 +59,19 @@ public class ServiceAbonnementCoach implements IService<AbonnementCoach>{
 
     @Override
     public void updateOne(AbonnementCoach t) throws SQLException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String req = "UPDATE abonnement_coach set coach_id = ?, client_id = ? ,duree_debut= ? ,duree_fin= ? ,duree_abonnement= ? ,statut= ? where id = ? ";
+       
+       PreparedStatement ps = cnx.prepareStatement(req);
+       ps.setInt(1, t.getCoach_id().getId());
+       ps.setInt(2, t.getClient_id().getId());
+       ps.setDate(3, t.getDateDebut());
+       ps.setDate(4, t.getDateFin());
+       ps.setInt(5, t.getDuree());
+       ps.setInt(6, t.getStatut());
+       ps.setInt(7, t.getId());
+       
+       ps.executeUpdate();
+       System.out.println("Abonnement Coach mis à jour !");
     }
 
     @Override
@@ -68,7 +81,13 @@ public class ServiceAbonnementCoach implements IService<AbonnementCoach>{
 
     @Override
     public void deleteOne(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req = "DELETE from abonnement_coach where id = ?";
+        
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, id);
+        
+        ps.executeUpdate();
+        System.out.println("Abonnement Coach supprimé !");
     }
 
     @Override
@@ -80,36 +99,45 @@ public class ServiceAbonnementCoach implements IService<AbonnementCoach>{
         ResultSet rs = st.executeQuery(req);
         
         while (rs.next()) {
-            User u01 = new  User();
-            User u02 = new  User();
+            User u01 = null;
+            User u02 = null;
             
-            String req01 = "SELECT * FROM `user` WHERE id = " + rs.getInt("coach_id") + "LIMIT 1";
-            String req02 = "SELECT * FROM `user` WHERE id = " + rs.getInt("client_id") + "LIMIT 1";
-            ResultSet rs01 = st.executeQuery(req01);
-            ResultSet rs02 = st.executeQuery(req02);
+            String req01 = "SELECT * FROM `user` WHERE `id` = " + rs.getInt("coach_id")+ " LIMIT 1;" ;
+            String req02 = "SELECT * FROM `user` WHERE id = " + rs.getInt("client_id") + " LIMIT 1;";
             
-            u01.setId(rs01.getInt("id"));
-            u01.setCategorie_user_id(rs01.getInt("categorie_user_id"));
-            u01.setNom(rs01.getString("nom"));
-            u01.setPrenom(rs01.getString("prenom"));
-            u01.setEmail(rs01.getString("email"));
-            u01.setTelephone(rs01.getInt("telephone"));
+            Statement st1 = cnx.createStatement();            
+            ResultSet rs01 = st1.executeQuery(req01);
             
-            u02.setId(rs02.getInt("id"));
-            u02.setCategorie_user_id(rs02.getInt("categorie_user_id"));
-            u02.setNom(rs02.getString("nom"));
-            u02.setPrenom(rs02.getString("prenom"));
-            u02.setEmail(rs02.getString("email"));
-            u02.setTelephone(rs02.getInt("telephone"));
+            Statement st2 = cnx.createStatement();
+            ResultSet rs02 = st2.executeQuery(req02);
             
+            while (rs01.next()) {
+                u01 = new User(rs01.getInt("id"),
+                        rs01.getInt("categorie_user_id"),
+                        rs01.getInt("telephone"),
+                        rs01.getString("nom"),
+                        rs01.getString("prenom"),
+                        rs01.getString("email"));
+            }
+            while (rs02.next()) {
+                u02 = new User(rs02.getInt("id"),
+                        rs02.getInt("categorie_user_id"),
+                        rs02.getInt("telephone"),
+                        rs02.getString("nom"),
+                        rs02.getString("prenom"),
+                        rs02.getString("email"));
+                
+            }
             
-            AbonnementCoach p = new  AbonnementCoach();
-            p.setCoach_id(u01);
-            p.setClient_id(u02);
-            p.setDateDebut(rs.getDate("duree_debut"));
-            p.setDateFin(rs.getDate("duree_fin"));
-            p.setDuree(rs.getInt("duree_abonnement"));
-            p.setStatut(rs.getInt("statut"));
+            AbonnementCoach p = new  AbonnementCoach(
+                    rs.getInt("id"),
+                    u01,u02,
+                    rs.getInt("duree_abonnement"),
+                    rs.getDate("duree_debut"),
+                    rs.getDate("duree_fin"),
+                    rs.getInt("statut")
+            );
+           
                         
             temp.add(p);
         }
@@ -118,7 +146,82 @@ public class ServiceAbonnementCoach implements IService<AbonnementCoach>{
         return temp;
         
     }
+
+    public List<AbonnementCoach> selectAbonnementByCoch(int id,int stat) throws SQLException {
+        List<AbonnementCoach> temp = new ArrayList<>();        
+        String req = "SELECT * FROM `abonnement_coach` where coach_id = " + id + " and statut = "+stat ;
+        System.out.println(req);
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        
+        while (rs.next()) {
+            User u01 = null;
+            User u02 = null;
+            
+            String req01 = "SELECT * FROM `user` WHERE `id` = " + rs.getInt("coach_id")+ " LIMIT 1;" ;
+            String req02 = "SELECT * FROM `user` WHERE id = " + rs.getInt("client_id") + " LIMIT 1;";
+            
+            Statement st1 = cnx.createStatement();            
+            ResultSet rs01 = st1.executeQuery(req01);
+            
+            Statement st2 = cnx.createStatement();
+            ResultSet rs02 = st2.executeQuery(req02);
+            
+            while (rs01.next()) {
+                u01 = new User(rs01.getInt("id"),
+                        rs01.getInt("categorie_user_id"),
+                        rs01.getInt("telephone"),
+                        rs01.getString("nom"),
+                        rs01.getString("prenom"),
+                        rs01.getString("email"));
+            }
+            while (rs02.next()) {
+                u02 = new User(rs02.getInt("id"),
+                        rs02.getInt("categorie_user_id"),
+                        rs02.getInt("telephone"),
+                        rs02.getString("nom"),
+                        rs02.getString("prenom"),
+                        rs02.getString("email"));
+                
+            }
+            
+            AbonnementCoach p = new  AbonnementCoach(
+                    rs.getInt("id"),
+                    u01,u02,
+                    rs.getInt("duree_abonnement"),
+                    rs.getDate("duree_debut"),
+                    rs.getDate("duree_fin"),
+                    rs.getInt("statut")
+            );
+           
+                        
+            temp.add(p);
+        }
+        System.out.println(temp);
+        return temp;
+        
+    }
     
+     
+     
+      public AbonnementCoach getByID(int id) {
+        AbonnementCoach  p=null ;
+        ServiceUser us = new  ServiceUser() ; 
+
+        try {
+            String req = "Select * from abonnement_coach where id = " + id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+             p =  new AbonnementCoach(id, us.getByID(rs.getInt("coach_id")),us.getByID(rs.getInt("client_id")), rs.getInt("duree_abonnement"), rs.getDate("duree_debut"), rs.getDate("duree_fin"), rs.getInt("statut"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return p ;
+
+    }
     
     
 }
