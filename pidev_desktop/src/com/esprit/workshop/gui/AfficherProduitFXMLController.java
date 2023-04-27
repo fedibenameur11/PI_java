@@ -92,6 +92,8 @@ public class AfficherProduitFXMLController implements Initializable {
     private Label LPrixMax;
     @FXML
     private TextField tfPrixMax;
+    @FXML
+    private Button btn_ajouter_produit;
     
 
     /**
@@ -101,7 +103,7 @@ public class AfficherProduitFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         produits = FXCollections.observableArrayList();
-        afficherProduits();
+        //afficherProduits();
         nomColumn.setCellValueFactory(cellData -> cellData.getValue().nomProperty());
         prixColumn.setCellValueFactory(cellData -> cellData.getValue().prixProperty().asObject());  
         quantiteColumn.setCellValueFactory(cellData -> cellData.getValue().quantiteProperty().asObject());
@@ -605,6 +607,77 @@ public class AfficherProduitFXMLController implements Initializable {
         // Mettre à jour la liste des produits pour afficher uniquement les produits à faible quantité
         produits.setAll(lowQuantityProducts);
     }
+    }
+
+    void afficherProduit_CAT(Categorie_prod cc) {
+            Connection connexion = null;
+            PreparedStatement preparedStatement = null;
+            ResultSet resultSet = null;
+            try {
+                connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
+                String req = "SELECT * FROM `produit` where cat = ? ";
+
+                preparedStatement = connexion.prepareStatement(req);
+                preparedStatement.setInt(1,cc.getId());
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String nom = resultSet.getString("nom");
+                    Float prix = resultSet.getFloat("prix");
+                    int quantite = resultSet.getInt("quantite");
+                    float poids = resultSet.getFloat("poids");
+                    int idCategorie = resultSet.getInt("cat");
+                    Categorie_prod c = null;
+
+                // Récupération de la catégorie à partir de la base de données
+                String sql2 = "SELECT * FROM `categorie_prod` WHERE `id` = ?";
+                PreparedStatement preparedStatement2 = connexion.prepareStatement(sql2);
+                preparedStatement2.setInt(1, idCategorie);
+                ResultSet resultSet2 = preparedStatement2.executeQuery();
+                if (resultSet2.next()) {
+                    String nomCategorie = resultSet2.getString("nom");
+                    c = new Categorie_prod(idCategorie, nomCategorie);
+                }
+                    Produit p = new Produit( nom, prix, quantite,poids,c);
+                    produits.add(p);
+                }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (resultSet != null) {
+                        try {
+                            resultSet.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (preparedStatement != null) {
+                        try {
+                            preparedStatement.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (connexion != null) {
+                        try {
+                            connexion.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+
+            }
+
+    @FXML
+    private void Ajouter_produit(ActionEvent event) throws IOException {
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("AjouterProduitFXML.fxml"));
+         Parent root = loader2.load();
+         Scene scene = new Scene(root);
+         Stage stage = new Stage();
+         stage.setScene(scene);
+         stage.showAndWait();
+    
     }
 
     public class EnvoyerEmail {

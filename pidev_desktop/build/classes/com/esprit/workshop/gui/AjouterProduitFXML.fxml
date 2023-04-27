@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterProduitFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterProduitFXMLController">
    <children>
       <Button fx:id="btnAjouter_Produit" layoutX="69.0" layoutY="327.0" mnemonicParsing="false" onAction="#AjouterProduit" text="Ajouter" />
       <Button fx:id="btnAfficher_Produit" layoutX="212.0" layoutY="327.0" mnemonicParsing="false" onAction="#AfficherProduit" text="Afficher" />

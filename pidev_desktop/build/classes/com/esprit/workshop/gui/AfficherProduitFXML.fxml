@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="863.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherProduitFXMLController">
    <children>
-       <TableView fx:id="tableView" layoutX="42.0" layoutY="148.0" prefHeight="495.0" prefWidth="784.0">
+       <TableView fx:id="tableView" layoutX="42.0" layoutY="148.0" prefHeight="495.0" prefWidth="796.0">
            <columns>
                <TableColumn fx:id="nomColumn" prefWidth="99.0" text="nom" />
                <TableColumn fx:id="prixColumn" prefWidth="81.0" text="prix" />
@@ -17,7 +17,7 @@
                <TableColumn fx:id="poidsColumn" prefWidth="86.0" text="poids" />
             <TableColumn fx:id="CategorieColumn" prefWidth="133.0" text="Categorie" />
             <TableColumn fx:id="colSuppression" prefWidth="143.0" text="Supprimer" />
-            <TableColumn fx:id="colModification" prefWidth="143.0" text="Modifier" />
+            <TableColumn fx:id="colModification" prefWidth="155.0" text="Modifier" />
            </columns>
        </TableView>
       <Button fx:id="btnRechercher" layoutX="529.0" layoutY="59.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
@@ -28,5 +28,6 @@
       <TextField fx:id="tfPrixMin" layoutX="102.0" layoutY="97.0" prefHeight="31.0" prefWidth="94.0" />
       <Label fx:id="LPrixMax" layoutX="254.0" layoutY="102.0" text="Prix Max" textFill="WHITE" />
       <TextField fx:id="tfPrixMax" layoutX="338.0" layoutY="97.0" prefHeight="31.0" prefWidth="94.0" />
+      <Button fx:id="btn_ajouter_produit" layoutX="37.0" layoutY="669.0" mnemonicParsing="false" onAction="#Ajouter_produit" text="Ajouter produit" />
    </children>
 </AnchorPane>

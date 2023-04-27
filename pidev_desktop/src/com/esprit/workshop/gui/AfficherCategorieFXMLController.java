@@ -7,6 +7,7 @@ package com.esprit.workshop.gui;
 
 import com.esprit.workshop.entites.Categorie_prod;
 import com.esprit.workshop.entites.Produit;
+import com.esprit.workshop.gui.front.AfficherProduitFRONTFXMLController;
 import com.esprit.workshop.services.ServiceCategorie_prod;
 import com.esprit.workshop.services.ServiceProduit;
 import java.io.IOException;
@@ -60,6 +61,10 @@ public class AfficherCategorieFXMLController implements Initializable {
     private TextField tfRechercheNom;
     @FXML
     private Button btn_recherche;
+    @FXML
+    private TableColumn <Categorie_prod, Void> ActionCol;
+    @FXML
+    private Button btn_Ajouter_Categorie;
 
     /**
      * Initializes the controller class.
@@ -216,7 +221,87 @@ public class AfficherCategorieFXMLController implements Initializable {
             }
             });
         
-        
+        ActionCol.setPrefWidth(80);
+        ActionCol.setCellFactory(column -> {
+        return new TableCell<Categorie_prod, Void>() {
+            private final Button btn = new Button("Voir produits");
+
+            {
+                btn.setOnAction(event -> {
+                    try {
+                        Categorie_prod Cproduit = getTableView().getItems().get(getIndex());
+                        String CproductNom = Cproduit.getNom();
+    
+                    try {
+                        Connection conn = null;
+                        PreparedStatement preparedStatement = null;
+                        ResultSet resultSet = null;
+                        conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
+                        String sql = "SELECT id FROM categorie_prod WHERE nom = ? ";
+                        PreparedStatement stmt = conn.prepareStatement(sql);
+                        stmt.setString(1, CproductNom);
+                        ResultSet rs = stmt.executeQuery();
+
+                        if (rs.next()) {
+                            int CproductId = rs.getInt("id");
+                            Cproduit.setId(CproductId);
+                        }
+
+                        rs.close();
+                        stmt.close();
+                        conn.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                        // Rediriger vers la vue de modification avec les informations du produit sélectionné
+                        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("AfficherProduitFXML.fxml"));
+                        Parent root = loader2.load();
+
+                        AfficherProduitFXMLController controller2 = loader2.getController();
+                        //controller2.initData(Cproduit);
+                        controller2.afficherProduit_CAT(Cproduit);
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+                        stage.setScene(scene);
+                        stage.showAndWait();
+                        // Actualiser la table des produits après la modification
+                        //afficherProduits();
+                        //tableViewC.getItems();
+                        tableViewC.refresh();
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherCategorieFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                
+                
+                
+                
+                
+                
+                Image image2 = new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/search.JPG");
+
+                                    // Création de l'objet ImageView
+                                    ImageView imageView2 = new ImageView(image2);
+
+                                    // Redimensionnement de l'image pour qu'elle s'adapte à la boîte de dialogue
+                                    imageView2.setFitWidth(40);
+                                    imageView2.setFitHeight(40);
+                                //btnSupprimer.setGraphic(new ImageView(new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png")));
+                                btn.setGraphic(imageView2);
+                                btn.getStyleClass().add("icon-only");
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btn);
+                }
+                            }
+                        };
+                    });
         tableViewC.setItems(Categories);
 
     }    
@@ -349,6 +434,16 @@ public class AfficherCategorieFXMLController implements Initializable {
             }
                 
             }
+
+    @FXML
+    private void Ajouter_Categorie(ActionEvent event) throws IOException {
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("AjouterCategorieFXML.fxml"));
+         Parent root = loader2.load();
+         Scene scene = new Scene(root);
+         Stage stage = new Stage();
+         stage.setScene(scene);
+         stage.showAndWait();
+    }
     
 
     
