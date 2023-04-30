@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,7 +43,8 @@ public class AfficherAbonnement2Controller implements Initializable {
     @FXML
     private TableColumn<abonnementSalle, String> dureeColumn;
     
-    
+    @FXML
+    private TableColumn<abonnementSalle, String> tc_commande;
     
     private ObservableList<abonnementSalle> abonnementList;
     
@@ -76,7 +78,9 @@ public class AfficherAbonnement2Controller implements Initializable {
           Logger.getLogger(AfficherAbonnement2Controller.class.getName()).log(Level.SEVERE, null, ex);
       }
         
-        dureeColumn.setCellValueFactory(new PropertyValueFactory<>("duree_abonnement"));
+       // dureeColumn.setCellValueFactory(new PropertyValueFactory<>("nom_commande"));
+        dureeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom_commande()));
+        tc_commande.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDate_commande()));
         
 
         

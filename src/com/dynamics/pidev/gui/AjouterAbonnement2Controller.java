@@ -33,6 +33,9 @@ public class AjouterAbonnement2Controller implements Initializable {
     private TextField tfdur;
     @FXML
     private Button btn;
+     @FXML
+    private TextField tfdate;
+
 
     @FXML 
         void switchButton(ActionEvent event) throws IOException {
@@ -55,6 +58,7 @@ public class AjouterAbonnement2Controller implements Initializable {
     @FXML
     private void AjouterAbonnement2(ActionEvent event) {
     String duree = tfdur.getText();
+    String date = tfdate.getText();
 
     if (duree.isEmpty()) {
         Alert al = new Alert(Alert.AlertType.WARNING);
@@ -67,7 +71,7 @@ public class AjouterAbonnement2Controller implements Initializable {
         al.setContentText("La durée ne doit pas dépasser 10 caractères !");
         al.show();
     } else {
-        abonnementSalle p = new abonnementSalle(duree);
+        abonnementSalle p = new abonnementSalle(duree,date);
         AbonnementService sp = new AbonnementService();
 
         try {

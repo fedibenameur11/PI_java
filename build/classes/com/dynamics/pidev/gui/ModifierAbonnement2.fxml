@@ -12,7 +12,7 @@
    <children>
       
       <Label layoutX="508.0" layoutY="247.0" text="ID:" />
-      <Label layoutX="509.0" layoutY="291.0" text="Durée d'abonnement:" />
+      <Label layoutX="509.0" layoutY="291.0" text="nom_commande" />
       <TextField fx:id="idField" layoutX="678.0" layoutY="242.0" />
       <TextField fx:id="dureeAbonnementField" layoutX="679.0" layoutY="286.0" />
       <Button layoutX="699.0" layoutY="382.0" mnemonicParsing="false" onAction="#modifierAbonnement" text="Modifier" />
@@ -63,5 +63,7 @@
          <Image url="@../images/forum.png" />
       </image>
    </ImageView>
+      <Label layoutX="509.0" layoutY="330.0" text="date_commande" />
+      <TextField fx:id="datecommandefield" layoutX="679.0" layoutY="326.0" />
    </children>
 </AnchorPane>

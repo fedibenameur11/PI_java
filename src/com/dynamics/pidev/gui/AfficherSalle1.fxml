@@ -74,4 +74,5 @@
    <TextField fx:id="filterField" layoutX="341.0" layoutY="139.0" promptText="Search" />
    <TextField fx:id="br_data" layoutX="341.0" layoutY="636.0" promptText="BarCode" />
    <Button fx:id="brcbtn" layoutX="549.0" layoutY="636.0" mnemonicParsing="false" onAction="#generateBarcode" text="generate" />
+   <Button layoutX="908.0" layoutY="636.0" mnemonicParsing="false" onAction="#switchButton3" text="voir les commandes" />
 </AnchorPane>

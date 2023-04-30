@@ -36,26 +36,28 @@ public class AbonnementService implements IService<abonnementSalle>{
     }
     
     public void insertOne1(abonnementSalle t) throws SQLException{
-        String req = "INSERT INTO `commandes`(`nom_commande`) VALUES (?)";
+        String req = "INSERT INTO `commandes`(`nom_commande`,`date_commande`) VALUES (?,?)";
         
         PreparedStatement ps = cnx.prepareStatement(req);
         
         ps.setString(1, t.getNom_commande());
+        ps.setString(2, t.getDate_commande());
         
         
         ps.executeUpdate();    
-        System.out.println("abonnement ajouté !");
+        System.out.println("commande ajouté !");
     }
 
     public void updateOne(abonnementSalle t, int id) throws SQLException{
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String req="UPDATE commandes SET `nom_commande`= ? WHERE id="+id;
+        String req="UPDATE commandes SET `nom_commande`= ?,`date_commande`= ? WHERE id="+id;
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, t.getNom_commande());
+        ps.setString(2, t.getDate_commande());
         
         //ps.setInt(2, t.getId());
         ps.executeUpdate();    
-        System.out.println("abonnement modifié avec succés !");
+        System.out.println("commande modifiée avec succés !");
     }
 
     //@Override
@@ -69,7 +71,7 @@ public class AbonnementService implements IService<abonnementSalle>{
         String req = "Delete FROM `commandes` WHERE id ='"+id+"';";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
-        System.out.println("abonnement supprimé avec succés");
+        System.out.println("commande supprimé avec succés");
     }
 
     @Override
@@ -87,7 +89,7 @@ public class AbonnementService implements IService<abonnementSalle>{
             p1.setId(rs.getInt(1));
             
             p1.setNom_commande(rs.getString(2));
-                        
+            p1.setDate_commande(rs.getString(3));            
             temp.add(p1);
         }
         

@@ -38,7 +38,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.google.zxing.BarcodeFormat;
-
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 /**
  * FXML Controller class
  *
@@ -99,8 +101,15 @@ public class AfficherSalle1Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-        
-
+     @FXML 
+        void switchButton3(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherAbonnement2.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
 
   @Override
 public void initialize(URL url, ResourceBundle rb) {
@@ -125,6 +134,7 @@ public void initialize(URL url, ResourceBundle rb) {
     filterField.textProperty().addListener((observable, oldValue, newValue) -> {
         search(); // Appeler la méthode search() lorsque le texte change
     });
+    
 }
 void search() {
     // Récupérer le texte de recherche
@@ -201,6 +211,11 @@ void generateBarcode(ActionEvent event) {
             alert.setHeaderText("Code-barres généré avec succès");
             alert.setContentText("Le code-barres a été enregistré dans le fichier:\n" + file.getAbsolutePath());
             alert.showAndWait();
+            EnvoyerSMS sms = new EnvoyerSMS();
+                        String numTel = "+21690623673"; // Numéro de téléphone de livreur à informer
+                        String messageContent = "Votre livraison sera faite dans 24h"; // Contenu du SMS à envoyer
+                        sms.send(numTel, messageContent);
+                        
         }
     } catch (WriterException | IOException e) {
         Alert alert = new Alert(AlertType.ERROR);
@@ -210,5 +225,26 @@ void generateBarcode(ActionEvent event) {
         alert.showAndWait();
     }
 }
-    
+ public class EnvoyerSMS {
+             // Vos identifiants Twilio
+            private static final String ACCOUNT_SID = "ACa8bdf26d92fc217fec844cb67933f574";
+            private static final String AUTH_TOKEN = "d55f472b96e17ad9342b27f74e050bc7";
+
+            // Numéro de téléphone Twilio
+            private static final String TWILIO_PHONE_NUMBER = "+16074146933";
+
+            public void send(String toPhoneNumber, String message) {
+                try {
+                    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                    Message twilioMessage = Message.creator(
+                            new PhoneNumber(toPhoneNumber),
+                            new PhoneNumber(TWILIO_PHONE_NUMBER),
+                            message).create();
+                    System.out.println("Message envoyé avec succées");
+                } catch (Exception ex) {
+                    System.out.println("Error sending SMS: " + ex.getMessage());
+                }
+
+        }
+        }   
 }

@@ -32,6 +32,9 @@ public class ModifierAbonnement2Controller implements Initializable {
     private TextField dureeAbonnementField;
     
     private AbonnementService abonnementService;
+    @FXML
+    private TextField datecommandefield;
+
     
     @FXML 
         void switchButton(ActionEvent event) throws IOException {
@@ -51,16 +54,18 @@ public class ModifierAbonnement2Controller implements Initializable {
         try {
             int id = Integer.parseInt(idField.getText());
             String dureeAbonnement = dureeAbonnementField.getText();
+            String datecommande = datecommandefield.getText();
             
             abonnementSalle abonnement = new abonnementSalle();
             abonnement.setNom_commande(dureeAbonnement);
+            abonnement.setDate_commande(datecommande);
             
             abonnementService.updateOne(abonnement, id);
             
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Modification d'abonnement");
             alert.setHeaderText(null);
-            alert.setContentText("L'abonnement a été modifié avec succès !");
+            alert.setContentText("La commande a été modifié avec succès !");
             alert.showAndWait();
             
         } catch (NumberFormatException e) {
@@ -73,7 +78,7 @@ public class ModifierAbonnement2Controller implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
-            alert.setContentText("Une erreur est survenue lors de la modification de l'abonnement !");
+            alert.setContentText("Une erreur est survenue lors de la modification de la commande !");
             alert.showAndWait();
         }
     }

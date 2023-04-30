@@ -58,7 +58,9 @@ public class abonnementSalle {
     }
 
     public abonnementSalle(String duree) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //this.date_commande = new String(duree);
+        this.nom_commande = new String(duree);
     }
 
     

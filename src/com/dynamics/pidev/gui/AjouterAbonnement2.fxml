@@ -14,7 +14,7 @@
         <URL value="@ajouterabonnement2.css" />
     </stylesheets>
    <children>
-      <Label layoutX="522.0" layoutY="232.0" text="durée abonnement :" />
+      <Label layoutX="522.0" layoutY="232.0" text="nom_commande" />
       <TextField fx:id="tfdur" layoutX="678.0" layoutY="227.0" />
       <Button fx:id="btn" layoutX="687.0" layoutY="331.0" mnemonicParsing="false" text="enregister" />
       <Button layoutX="595.0" layoutY="331.0" mnemonicParsing="false" onAction="#switchButton" text="retour" />
@@ -30,9 +30,9 @@
    <Label layoutX="119.0" layoutY="391.0" text="Gestion Coachs" />
    <Label layoutX="121.0" layoutY="497.0" text="Gestion Forums" />
    <Button layoutX="97.0" layoutY="549.0" mnemonicParsing="false" text="se déconnecter" />
-   <Label layoutX="483.0" layoutY="68.0" style="-fx-font-size: 45px;" text="Ajouter Abonnement" textFill="#e39827" />
+   <Label layoutX="483.0" layoutY="68.0" style="-fx-font-size: 45px;" text="Ajouter Commande" textFill="#e39827" />
 
-   <Label layoutX="120.0" layoutY="445.0" text="Gestion Salles" textFill="#e39827" />
+   <Label layoutX="120.0" layoutY="445.0" text="Gestion Commandes" textFill="#e39827" />
    <Line endX="-11.0" endY="64.0" layoutX="315.0" layoutY="571.0" startX="-11.0" startY="-559.0" />
    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -64,5 +64,7 @@
          <Image url="@../images/forum.png" />
       </image>
    </ImageView>
+      <TextField fx:id="tfdate" layoutX="683.0" layoutY="277.0" />
+      <Label layoutX="522.0" layoutY="283.0" prefHeight="17.0" prefWidth="111.0" text="date_commande" />
    </children>
 </AnchorPane>
