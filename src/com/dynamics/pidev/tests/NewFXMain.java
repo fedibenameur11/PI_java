@@ -4,10 +4,10 @@
  */
 package com.dynamics.pidev.tests;
 
-import com.dynamics.pidev.entites.Salle;
-import com.dynamics.pidev.entites.abonnementSalle;
-import com.dynamics.pidev.services.AbonnementService;
-import com.dynamics.pidev.services.SalleService;
+import com.dynamics.pidev.entites.Livraison;
+import com.dynamics.pidev.entites.Commande;
+import com.dynamics.pidev.services.CommandeService;
+import com.dynamics.pidev.services.LivraisonService;
 import com.dynamics.pidev.utils.MyConnexion;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,7 +34,7 @@ public class NewFXMain extends Application{
            
         try {
             
-          Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherSalle1.fxml"));
+          Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherLivraison1.fxml"));
             
            Scene scene = new Scene(root);
         
@@ -74,13 +74,13 @@ public class NewFXMain extends Application{
         //System.out.println(cn3.hashCode());
         //System.out.println(cn4.hashCode());
         //System.out.println(cn5.hashCode());
-        //AbonnementService sp1 = new AbonnementService();
+        //AbonnementService sp1 = new CommandeService();
         //sp1.deleteOne(9);
-        //SalleService sp = new SalleService();
+        //SalleService sp = new LivraisonService();
         //sp.deleteOne(14);
         //System.out.println(sp.selectAll());
         
-        //Salle p = new Salle(0, "Arena Gym", "Lac 2", 28564732, 1098, "Tunis", 400);
+        //Salle p = new Livraison(0, "Arena Gym", "Lac 2", 28564732, 1098, "Tunis", 400);
         
         
           //  sp.insertOne(p);
@@ -89,7 +89,7 @@ public class NewFXMain extends Application{
             
         
         //System.out.println(sp1.selectAll());
-        //abonnementSalle p1 = new abonnementSalle(0, "sept mois");
+        //abonnementSalle p1 = new Commande(0, "sept mois");
         
         
           //  sp1.insertOne1(p1);
