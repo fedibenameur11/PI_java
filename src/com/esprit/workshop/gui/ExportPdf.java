@@ -45,7 +45,7 @@ public class ExportPdf {
           PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/Alae/Desktop/Abonnement.pdf"));
           doc.open();
             // Add logo image
-            Image logo = Image.getInstance("D:/3éme ingenieurie/Semestre 2/projet_pidev_javafx/src/com/esprit/workshop/gui/logo_true.png");
+            Image logo = Image.getInstance("D:\\3éme ingenieurie\\Semestre 2\\PI_java\\src\\com\\esprit\\workshop\\gui\\logo_true.png");
             logo.setAlignment(Element.ALIGN_CENTER);
             logo.scaleToFit(150, 150);
             doc.add(logo);
