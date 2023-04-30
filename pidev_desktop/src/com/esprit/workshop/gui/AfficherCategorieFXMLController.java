@@ -148,8 +148,8 @@ public class AfficherCategorieFXMLController implements Initializable {
                         Connection conn = null;
                         PreparedStatement preparedStatement = null;
                         ResultSet resultSet = null;
-                        conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
-                        String sql = "SELECT id FROM categorie_prod WHERE nom = ? ";
+                        conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev?useSSL=false","root","");
+                        String sql = "SELECT id FROM categorie WHERE nom = ? ";
                         PreparedStatement stmt = conn.prepareStatement(sql);
                         stmt.setString(1, CproductNom);
                         ResultSet rs = stmt.executeQuery();
@@ -236,8 +236,8 @@ public class AfficherCategorieFXMLController implements Initializable {
                         Connection conn = null;
                         PreparedStatement preparedStatement = null;
                         ResultSet resultSet = null;
-                        conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
-                        String sql = "SELECT id FROM categorie_prod WHERE nom = ? ";
+                        conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev?useSSL=false","root","");
+                        String sql = "SELECT id FROM categorie WHERE nom = ? ";
                         PreparedStatement stmt = conn.prepareStatement(sql);
                         stmt.setString(1, CproductNom);
                         ResultSet rs = stmt.executeQuery();
@@ -284,8 +284,8 @@ public class AfficherCategorieFXMLController implements Initializable {
                                     ImageView imageView2 = new ImageView(image2);
 
                                     // Redimensionnement de l'image pour qu'elle s'adapte à la boîte de dialogue
-                                    imageView2.setFitWidth(40);
-                                    imageView2.setFitHeight(40);
+                                    imageView2.setFitWidth(30);
+                                    imageView2.setFitHeight(30);
                                 //btnSupprimer.setGraphic(new ImageView(new Image("file:///C:/Users/MSI/Documents/NetBeansProjects/pidev_desktop/pidev_desktop/src/com/esprit/workshop/photos/delete.png")));
                                 btn.setGraphic(imageView2);
                                 btn.getStyleClass().add("icon-only");
@@ -311,9 +311,9 @@ public class AfficherCategorieFXMLController implements Initializable {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
+            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev?useSSL=false","root","");
             //connexion = MySQLConnexion.getInstance().getConnection();
-            String sql = "SELECT * FROM `categorie_prod` ";
+            String sql = "SELECT * FROM `categorie` ";
             preparedStatement = connexion.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -374,9 +374,9 @@ public class AfficherCategorieFXMLController implements Initializable {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
+            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev?useSSL=false","root","");
             //connexion = MySQLConnexion.getInstance().getConnection();
-            String sql = "SELECT * FROM `categorie_prod` where nom LIKE ?";
+            String sql = "SELECT * FROM `categorie` where nom LIKE ?";
             
             preparedStatement = connexion.prepareStatement(sql);
             preparedStatement.setString(1,"%"+n+"%");

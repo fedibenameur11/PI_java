@@ -5,15 +5,72 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="450.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterCategorieFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="651.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterCategorieFXMLController">
    <children>
-      <Button fx:id="btnAjouter_Categorie" layoutX="76.0" layoutY="149.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
-      <Button fx:id="btnAfficher_Categorie" layoutX="181.0" layoutY="149.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
-      <Button fx:id="btnReset" layoutX="296.0" layoutY="149.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
-      <TextField fx:id="tfNomCat" layoutX="151.0" layoutY="14.0" />
-      <Label layoutX="76.0" layoutY="19.0" text="Nom" />
-      <TextField fx:id="br_data" layoutX="151.0" layoutY="71.0" />
-      <Label fx:id="tfBarCode" layoutX="64.0" layoutY="76.0" text="BarCode" />
+      <Button fx:id="btnAjouter_Categorie" layoutX="326.0" layoutY="459.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
+      <Button fx:id="btnAfficher_Categorie" layoutX="444.0" layoutY="459.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
+      <Button fx:id="btnReset" layoutX="553.0" layoutY="459.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <TextField fx:id="tfNomCat" layoutX="414.0" layoutY="338.0" />
+      <Label layoutX="344.0" layoutY="343.0" text="Nom" />
+      <TextField fx:id="br_data" layoutX="423.0" layoutY="392.0" />
+      <Label fx:id="tfBarCode" layoutX="338.0" layoutY="397.0" text="BarCode" />
+      <ImageView fitHeight="128.0" fitWidth="138.0" layoutX="82.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/logoo.png" />
+      </image>
+   </ImageView>
+   <Line endX="100.0" layoutX="157.0" layoutY="189.0" startX="-100.0" />
+   <Label layoutX="116.0" layoutY="221.0" text="Gestion Utilisateurs" />
+   <Label layoutX="116.0" layoutY="279.0" text="Gestion Produits" />
+   <Label layoutX="118.0" layoutY="332.0" text="Gestion Commandes" />
+   <Label layoutX="120.0" layoutY="386.0" text="Gestion Coachs" />
+   <Label layoutX="121.0" layoutY="490.0" text="Gestion Forums" />
+   <Button layoutX="94.0" layoutY="550.0" mnemonicParsing="false" text="se déconnecter" />
+
+   <Label layoutX="121.0" layoutY="438.0" text="Gestion Salles" textFill="#e39827" />
+   <Line endX="-11.0" endY="64.0" layoutX="315.0" layoutY="571.0" startX="-11.0" startY="-559.0" />
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/utilisateurs.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="69.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/produit.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/livraison.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/coach.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/salle.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/forum.png" />
+      </image>
+   </ImageView>
    </children>
 </AnchorPane>

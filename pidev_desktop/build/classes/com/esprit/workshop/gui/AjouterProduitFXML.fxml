@@ -5,21 +5,83 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterProduitFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="716.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterProduitFXMLController">
    <children>
-      <Button fx:id="btnAjouter_Produit" layoutX="69.0" layoutY="327.0" mnemonicParsing="false" onAction="#AjouterProduit" text="Ajouter" />
-      <Button fx:id="btnAfficher_Produit" layoutX="212.0" layoutY="327.0" mnemonicParsing="false" onAction="#AfficherProduit" text="Afficher" />
-      <Button fx:id="btnReset" layoutX="367.0" layoutY="327.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
-      <Label layoutX="72.0" layoutY="47.0" text="nom" />
-      <Label layoutX="71.0" layoutY="101.0" text="prix" />
-      <Label layoutX="59.0" layoutY="155.0" text="quantite" />
-      <Label layoutX="68.0" layoutY="206.0" text="poids" />
-      <TextField fx:id="tfNom" layoutX="147.0" layoutY="42.0" />
-      <TextField fx:id="tfPrix" layoutX="147.0" layoutY="96.0" />
-      <TextField fx:id="tfQuantite" layoutX="147.0" layoutY="150.0" />
-      <TextField fx:id="tfPoids" layoutX="147.0" layoutY="201.0" />
-      <ComboBox fx:id="categorieBox" layoutX="151.0" layoutY="260.0" prefHeight="31.0" prefWidth="187.0" />
-      <Label layoutX="66.0" layoutY="265.0" text="Catégorie" />
+      <Button fx:id="btnAjouter_Produit" layoutX="348.0" layoutY="540.0" mnemonicParsing="false" onAction="#AjouterProduit" text="Ajouter" />
+      <Button fx:id="btnAfficher_Produit" layoutX="471.0" layoutY="540.0" mnemonicParsing="false" onAction="#AfficherProduit" text="Afficher" />
+      <Button fx:id="btnReset" layoutX="618.0" layoutY="540.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <Label layoutX="387.0" layoutY="227.0" text="nom" />
+      <Label layoutX="390.0" layoutY="281.0" text="prix" />
+      <Label layoutX="375.0" layoutY="342.0" text="quantite" />
+      <Label layoutX="384.0" layoutY="408.0" text="poids" />
+      <TextField fx:id="tfNom" layoutX="461.0" layoutY="222.0" />
+      <TextField fx:id="tfPrix" layoutX="461.0" layoutY="276.0" />
+      <TextField fx:id="tfQuantite" layoutX="461.0" layoutY="342.0" />
+      <TextField fx:id="tfPoids" layoutX="460.0" layoutY="403.0" />
+      <ComboBox fx:id="categorieBox" layoutX="460.0" layoutY="461.0" prefHeight="31.0" prefWidth="187.0" />
+      <Label layoutX="371.0" layoutY="466.0" text="Catégorie" />
+      <ImageView fitHeight="128.0" fitWidth="138.0" layoutX="82.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/logoo.png" />
+      </image>
+   </ImageView>
+   <Line endX="100.0" layoutX="157.0" layoutY="189.0" startX="-100.0" />
+   <Label layoutX="116.0" layoutY="221.0" text="Gestion Utilisateurs" />
+   <Label layoutX="116.0" layoutY="279.0" text="Gestion Produits" />
+   <Label layoutX="118.0" layoutY="332.0" text="Gestion Commandes" />
+   <Label layoutX="120.0" layoutY="386.0" text="Gestion Coachs" />
+   <Label layoutX="121.0" layoutY="490.0" text="Gestion Forums" />
+   <Button layoutX="94.0" layoutY="550.0" mnemonicParsing="false" text="se déconnecter" />
+
+   <Label layoutX="121.0" layoutY="438.0" text="Gestion Salles" textFill="#e39827" />
+   <Line endX="-11.0" endY="64.0" layoutX="315.0" layoutY="571.0" startX="-11.0" startY="-559.0" />
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/utilisateurs.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="69.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/produit.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/livraison.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/coach.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/salle.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/forum.png" />
+      </image>
+   </ImageView>
    </children>
 </AnchorPane>

@@ -36,7 +36,7 @@ public class Produit {
     private DoubleProperty prix;
     private IntegerProperty quantite;
     private DoubleProperty poids;
-    private SimpleObjectProperty<Categorie_prod> cat;
+    private SimpleObjectProperty<Categorie_prod> cat_id;
     
     //constructor
 
@@ -61,7 +61,7 @@ public class Produit {
         this.prix = new SimpleDoubleProperty(prix);
         this.quantite = new SimpleIntegerProperty(quantite);
         this.poids = new SimpleDoubleProperty(poids);
-        this.cat = new SimpleObjectProperty<>(cat);
+        this.cat_id = new SimpleObjectProperty<>(cat);
     }
     public void setId(int id) {
         this.id=id;
@@ -120,11 +120,11 @@ public class Produit {
         this.poids.set(poids);
     }
     public void setCat(Categorie_prod cat ) {
-        this.cat.set(cat);
+        this.cat_id.set(cat);
     }
     public Categorie_prod getCat()
     {
-        return cat.get();
+        return cat_id.get();
     }
 
 
@@ -134,7 +134,7 @@ public class Produit {
     }
 
     public SimpleObjectProperty<Categorie_prod> catProperty() {
-        return cat;
+        return cat_id;
     }
     
     

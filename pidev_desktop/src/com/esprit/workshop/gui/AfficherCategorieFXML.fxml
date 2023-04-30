@@ -5,10 +5,17 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="690.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherCategorieFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="656.0" prefWidth="1083.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherCategorieFXMLController">
    <children>
-      <TableView fx:id="tableViewC" layoutX="14.0" layoutY="137.0" prefHeight="452.0" prefWidth="662.0">
+      <TableView fx:id="tableViewC" layoutX="334.0" layoutY="185.0" prefHeight="404.0" prefWidth="614.0">
         <columns>
           <TableColumn fx:id="nomCol" prefWidth="159.0" text="Nom" />
             <TableColumn fx:id="colSuppression" prefWidth="147.0" text="Supprimer" />
@@ -16,8 +23,54 @@
             <TableColumn fx:id="ActionCol" prefWidth="200.0" text="Action" />
         </columns>
       </TableView>
-      <TextField fx:id="tfRechercheNom" layoutX="18.0" layoutY="61.0" onAction="#RechercherNom" />
-      <Button fx:id="btn_recherche" layoutX="239.0" layoutY="92.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
-      <Button fx:id="btn_Ajouter_Categorie" layoutX="40.0" layoutY="601.0" mnemonicParsing="false" onAction="#Ajouter_Categorie" text="Ajouter Catégorie" />
+      <TextField fx:id="tfRechercheNom" layoutX="657.0" layoutY="140.0" onAction="#RechercherNom" />
+      <Button fx:id="btn_recherche" layoutX="855.0" layoutY="140.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
+      <Button fx:id="btn_Ajouter_Categorie" layoutX="560.0" layoutY="605.0" mnemonicParsing="false" onAction="#Ajouter_Categorie" text="Ajouter Catégorie" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/logoo.png" />
+      </image>
+   </ImageView>
+   <Line endX="100.0" layoutX="157.0" layoutY="189.0" startX="-100.0" />
+   <Label layoutX="116.0" layoutY="221.0" text="Gestion Utilisateurs" />
+   <Label layoutX="116.0" layoutY="279.0" text="Gestion Produits" />
+   <Label layoutX="118.0" layoutY="332.0" text="Gestion Commandes" />
+   <Label layoutX="120.0" layoutY="386.0" text="Gestion Coachs" />
+   <Label layoutX="121.0" layoutY="490.0" text="Gestion Forums" />
+   <Button layoutX="94.0" layoutY="550.0" mnemonicParsing="false" text="se déconnecter" />
+
+   <Label layoutX="121.0" layoutY="438.0" text="Gestion Salles" textFill="#e39827" />
+   <Line endX="-11.0" endY="64.0" layoutX="315.0" layoutY="571.0" startX="-11.0" startY="-559.0" />
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/utilisateurs.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="69.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/produit.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/livraison.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/coach.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/salle.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/forum.png" />
+      </image>
+   </ImageView>
+      <Label layoutX="401.0" layoutY="51.0" style="-fx-font-size: 45px;" text="Bienvenue dans nos Catégories" textFill="#e39827" />
    </children>
 </AnchorPane>

@@ -5,12 +5,19 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="447.0" prefWidth="826.0" stylesheets="@css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.front.AfficherProduitFRONTFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="616.0" prefWidth="1005.0" stylesheets="@css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.front.AfficherProduitFRONTFXMLController">
    <children>
-      <Button fx:id="btnRechercher" layoutX="288.0" layoutY="39.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
-      <TextField fx:id="tfRechercheNom" layoutX="49.0" layoutY="23.0" />
-      <TableView fx:id="tableView" layoutX="19.0" layoutY="81.0" prefHeight="308.0" prefWidth="786.0">
+      <Button fx:id="btnRechercher" layoutX="355.0" layoutY="202.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
+      <TextField fx:id="tfRechercheNom" layoutX="135.0" layoutY="202.0" />
+      <TableView fx:id="tableView" layoutX="96.0" layoutY="270.0" prefHeight="308.0" prefWidth="786.0">
         <columns>
           <TableColumn fx:id="nomColumn" prefWidth="125.0" text="nom" />
           <TableColumn fx:id="prixColumn" prefWidth="93.0" text="prix" />
@@ -20,7 +27,19 @@
             <TableColumn fx:id="actionColumn" prefWidth="182.0" text="Action" />
         </columns>
       </TableView>
-      <ComboBox fx:id="triComboBox" layoutX="627.0" layoutY="24.0" prefWidth="150.0" />
-      <Label layoutX="545.0" layoutY="24.0" prefHeight="31.0" prefWidth="74.0" text="Trier : " textFill="WHITE" />
+      <ComboBox fx:id="triComboBox" layoutX="631.0" layoutY="217.0" prefWidth="150.0" />
+      <Label layoutX="547.0" layoutY="217.0" prefHeight="31.0" prefWidth="74.0" text="Trier : " />
+      <ImageView fitHeight="118.0" fitWidth="116.0" layoutX="38.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../photos/logoo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="288.0" layoutY="38.0" text="Utilisateur" />
+      <Label layoutX="452.0" layoutY="38.0" text="Produit" />
+      <Label layoutX="584.0" layoutY="38.0" text="Commande" />
+      <Label layoutX="729.0" layoutY="38.0" text="Coach" />
+      <Label layoutX="846.0" layoutY="38.0" text="Salle" textFill="#e39827" />
+      <Label layoutX="956.0" layoutY="38.0" prefHeight="21.0" prefWidth="49.0" text="Forum" />
+      <Label layoutX="236.0" layoutY="106.0" style="-fx-font-size: 45px;" text="Bienvenue dans nos Catégories" textFill="#e39827" />
    </children>
 </AnchorPane>

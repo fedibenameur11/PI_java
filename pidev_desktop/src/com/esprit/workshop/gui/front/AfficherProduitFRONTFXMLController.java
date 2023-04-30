@@ -243,7 +243,7 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
+            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev?useSSL=false","root","");
             //connexion = MySQLConnexion.getInstance().getConnection();
             String sql = "SELECT * FROM `produit` ";
             preparedStatement = connexion.prepareStatement(sql);
@@ -253,11 +253,11 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
                 Float prix = resultSet.getFloat("prix");
                 int quantite = resultSet.getInt("quantite");
                 float poids = resultSet.getFloat("poids");
-                int idCategorie = resultSet.getInt("cat");
+                int idCategorie = resultSet.getInt("cat_id");
                 Categorie_prod c = null;
 
             // Récupération de la catégorie à partir de la base de données
-            String sql2 = "SELECT * FROM `categorie_prod` WHERE `id` = ?";
+            String sql2 = "SELECT * FROM `categorie` WHERE `id` = ?";
             PreparedStatement preparedStatement2 = connexion.prepareStatement(sql2);
             preparedStatement2.setInt(1, idCategorie);
             ResultSet resultSet2 = preparedStatement2.executeQuery();
@@ -304,7 +304,7 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
+            connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev?useSSL=false","root","");
             //connexion = MySQLConnexion.getInstance().getConnection();
             String req = "SELECT * FROM `produit` where nom LIKE ? ";
             
@@ -316,11 +316,11 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
                 Float prix = resultSet.getFloat("prix");
                 int quantite = resultSet.getInt("quantite");
                 float poids = resultSet.getFloat("poids");
-                int idCategorie = resultSet.getInt("cat");
+                int idCategorie = resultSet.getInt("cat_id");
                 Categorie_prod c = null;
 
             // Récupération de la catégorie à partir de la base de données
-            String sql2 = "SELECT * FROM `categorie_prod` WHERE `id` = ?";
+            String sql2 = "SELECT * FROM `categorie` WHERE `id` = ?";
             PreparedStatement preparedStatement2 = connexion.prepareStatement(sql2);
             preparedStatement2.setInt(1, idCategorie);
             ResultSet resultSet2 = preparedStatement2.executeQuery();
@@ -364,8 +364,8 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
             PreparedStatement preparedStatement = null;
             ResultSet resultSet = null;
             try {
-                connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev_java?useSSL=false","root","");
-                String req = "SELECT * FROM `produit` where cat = ? ";
+                connexion=DriverManager.getConnection("jdbc:mysql://localhost:3307/pidev?useSSL=false","root","");
+                String req = "SELECT * FROM `produit` where cat_id = ? ";
 
                 preparedStatement = connexion.prepareStatement(req);
                 preparedStatement.setInt(1,cc.getId());
@@ -375,11 +375,11 @@ public class AfficherProduitFRONTFXMLController implements Initializable {
                     Float prix = resultSet.getFloat("prix");
                     int quantite = resultSet.getInt("quantite");
                     float poids = resultSet.getFloat("poids");
-                    int idCategorie = resultSet.getInt("cat");
+                    int idCategorie = resultSet.getInt("cat_id");
                     Categorie_prod c = null;
 
                 // Récupération de la catégorie à partir de la base de données
-                String sql2 = "SELECT * FROM `categorie_prod` WHERE `id` = ?";
+                String sql2 = "SELECT * FROM `categorie` WHERE `id` = ?";
                 PreparedStatement preparedStatement2 = connexion.prepareStatement(sql2);
                 preparedStatement2.setInt(1, idCategorie);
                 ResultSet resultSet2 = preparedStatement2.executeQuery();

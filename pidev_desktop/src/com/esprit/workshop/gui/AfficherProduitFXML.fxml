@@ -6,10 +6,20 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="863.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherProduitFXMLController">
+<AnchorPane prefHeight="669.0" prefWidth="1135.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AfficherProduitFXMLController">
    <children>
-       <TableView fx:id="tableView" layoutX="42.0" layoutY="148.0" prefHeight="495.0" prefWidth="796.0">
+       <TableView fx:id="tableView" layoutX="325.0" layoutY="228.0" prefHeight="316.0" prefWidth="796.0">
            <columns>
                <TableColumn fx:id="nomColumn" prefWidth="99.0" text="nom" />
                <TableColumn fx:id="prixColumn" prefWidth="81.0" text="prix" />
@@ -20,14 +30,58 @@
             <TableColumn fx:id="colModification" prefWidth="155.0" text="Modifier" />
            </columns>
        </TableView>
-      <Button fx:id="btnRechercher" layoutX="529.0" layoutY="59.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
-      <TextField fx:id="tfRechercheNom" layoutX="178.0" layoutY="33.0" />
-      <Button fx:id="btn_verifier" layoutX="748.0" layoutY="651.0" mnemonicParsing="false" onAction="#Verifier_quantite" text="Verifier" />
-      <Label fx:id="tfNomm" layoutX="123.0" layoutY="38.0" text="Nom" textFill="WHITE" />
-      <Label fx:id="LPrixMin" layoutX="24.0" layoutY="102.0" text="Prix Min" textFill="WHITE" />
-      <TextField fx:id="tfPrixMin" layoutX="102.0" layoutY="97.0" prefHeight="31.0" prefWidth="94.0" />
-      <Label fx:id="LPrixMax" layoutX="254.0" layoutY="102.0" text="Prix Max" textFill="WHITE" />
-      <TextField fx:id="tfPrixMax" layoutX="338.0" layoutY="97.0" prefHeight="31.0" prefWidth="94.0" />
-      <Button fx:id="btn_ajouter_produit" layoutX="37.0" layoutY="669.0" mnemonicParsing="false" onAction="#Ajouter_produit" text="Ajouter produit" />
+      <Button fx:id="btnRechercher" layoutX="989.0" layoutY="123.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
+      <TextField fx:id="tfRechercheNom" layoutX="737.0" layoutY="123.0" />
+      <Button fx:id="btn_verifier" layoutX="1020.0" layoutY="557.0" mnemonicParsing="false" onAction="#Verifier_quantite" text="Verifier" />
+      <Label fx:id="tfNomm" layoutX="670.0" layoutY="128.0" text="Nom" />
+      <Label fx:id="LPrixMin" layoutX="592.0" layoutY="180.0" text="Prix Min" />
+      <TextField fx:id="tfPrixMin" layoutX="683.0" layoutY="175.0" prefHeight="31.0" prefWidth="94.0" />
+      <Label fx:id="LPrixMax" layoutX="812.0" layoutY="180.0" text="Prix Max" />
+      <TextField fx:id="tfPrixMax" layoutX="895.0" layoutY="175.0" prefHeight="31.0" prefWidth="94.0" />
+      <Button fx:id="btn_ajouter_produit" layoutX="325.0" layoutY="550.0" mnemonicParsing="false" onAction="#Ajouter_produit" text="Ajouter produit" />
+      <Label layoutX="116.0" layoutY="221.0" text="Gestion Utilisateurs" />
+   <Label layoutX="116.0" layoutY="279.0" text="Gestion Produits" />
+   <Label layoutX="118.0" layoutY="332.0" text="Gestion Commandes" />
+   <Label layoutX="120.0" layoutY="386.0" text="Gestion Coachs" />
+   <Label layoutX="121.0" layoutY="490.0" text="Gestion Forums" />
+   <Button layoutX="94.0" layoutY="550.0" mnemonicParsing="false" text="se déconnecter" />
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/logoo.png" />
+      </image>
+   </ImageView>
+   <Label layoutX="121.0" layoutY="438.0" text="Gestion Salles" textFill="#e39827" />
+   <Line endX="-11.0" endY="64.0" layoutX="315.0" layoutY="571.0" startX="-11.0" startY="-559.0" />
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/utilisateurs.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="69.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/produit.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/livraison.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/coach.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/salle.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="65.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../photos/forum.png" />
+      </image>
+   </ImageView>
+      <Label layoutX="401.0" layoutY="51.0" style="-fx-font-size: 45px;" text="Bienvenue dans nos Catégories" textFill="#e39827" />
    </children>
 </AnchorPane>

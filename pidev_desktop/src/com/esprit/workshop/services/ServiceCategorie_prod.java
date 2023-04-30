@@ -44,7 +44,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
 
     @Override
     public void insertOne(Categorie_prod t) throws SQLException{
-        String req = "INSERT INTO `categorie_prod`(`nom`) "
+        String req = "INSERT INTO `categorie`(`nom`) "
                 + "VALUES ('"+t.getNom()+"')";
         Statement st = cnx.createStatement();
         st.executeUpdate(req);    
@@ -52,7 +52,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
     }
     
     public void insertOne1(Categorie_prod t) throws SQLException{
-        String req = "INSERT INTO `categorie_prod`(`nom`) VALUES (?)";
+        String req = "INSERT INTO `categorie`(`nom`) VALUES (?)";
         
         PreparedStatement ps = cnx.prepareStatement(req);
         
@@ -64,7 +64,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
 
     
     public void updateOne(Categorie_prod t,int id) throws SQLException{
-        String req = "UPDATE `categorie_prod` SET nom=? WHERE id=?";
+        String req = "UPDATE `categorie` SET nom=? WHERE id=?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1,t.getNom());
         ps.setInt(2, id);
@@ -73,7 +73,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
     }
     @Override
     public void updateOne(Categorie_prod t) throws SQLException{
-        String req = "UPDATE `categorie_prod` SET nom = ? WHERE id = ?";
+        String req = "UPDATE `categorie` SET nom = ? WHERE id = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1,t.getNom());
         ps.setInt(2, t.getId());
@@ -84,7 +84,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
 
     @Override
     public void deleteOne(Categorie_prod t) throws SQLException{
-        String req = "DELETE FROM `categorie_prod` WHERE nom = ?";
+        String req = "DELETE FROM `categorie` WHERE nom = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, t.getNom());   
         ps.executeUpdate(); 
@@ -93,7 +93,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
 
     @Override
     public void deleteOne(int id) throws SQLException {
-        String req = "DELETE FROM `categorie_prod` WHERE id = ?";
+        String req = "DELETE FROM `categorie` WHERE id = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, id);   
         ps.executeUpdate(); 
@@ -104,7 +104,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
     public List<Categorie_prod> selectAll() throws SQLException {
         List<Categorie_prod> temp = new ArrayList<>();
         
-        String req = "SELECT * FROM `categorie_prod` ";
+        String req = "SELECT * FROM `categorie` ";
         Statement st = cnx.createStatement();
         
         ResultSet rs = st.executeQuery(req);
@@ -123,7 +123,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
         
     }
     public boolean ControleNOM(Categorie_prod u) throws SQLException {
-    String req = "SELECT * FROM `categorie_prod` WHERE nom=?";
+    String req = "SELECT * FROM `categorie` WHERE nom=?";
     PreparedStatement ps = cnx.prepareStatement(req);
     ps.setString(1, u.getNom());
     ResultSet rs = ps.executeQuery();
@@ -135,7 +135,7 @@ public class ServiceCategorie_prod implements IService<Categorie_prod>{
 }
     
     public boolean ControleNOM2(Categorie_prod p) throws SQLException {
-        String req = "SELECT * FROM categorie_prod WHERE nom LIKE ?";
+        String req = "SELECT * FROM categorie WHERE nom LIKE ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, "%" + p.getNom() + "%");
         ResultSet rs = ps.executeQuery();

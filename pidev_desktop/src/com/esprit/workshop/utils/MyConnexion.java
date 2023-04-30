@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class MyConnexion {
     
-    private final String url = "jdbc:mysql://localhost:3307/pidev_java?useSSL=false"; 
+    private final String url = "jdbc:mysql://localhost:3307/pidev?useSSL=false"; 
     private final String login = "root";
     private final String password = "";
     
