@@ -23,7 +23,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="716.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterProduitFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="741.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterProduitFXMLController">
    <children>
       <Button fx:id="btnAjouter_Produit" layoutX="348.0" layoutY="540.0" mnemonicParsing="false" onAction="#AjouterProduit" text="Ajouter" />
       <Button fx:id="btnAfficher_Produit" layoutX="471.0" layoutY="540.0" mnemonicParsing="false" onAction="#AfficherProduit" text="Afficher" />
@@ -83,5 +83,6 @@
          <Image url="@../photos/forum.png" />
       </image>
    </ImageView>
+   <Label layoutX="348.0" layoutY="100.0" style="-fx-font-size: 45px;" text="Ajouter un produit" textFill="#e39827" />
    </children>
 </AnchorPane>

@@ -18,15 +18,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="651.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterCategorieFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="771.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.AjouterCategorieFXMLController">
    <children>
-      <Button fx:id="btnAjouter_Categorie" layoutX="326.0" layoutY="459.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
-      <Button fx:id="btnAfficher_Categorie" layoutX="444.0" layoutY="459.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
-      <Button fx:id="btnReset" layoutX="553.0" layoutY="459.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
-      <TextField fx:id="tfNomCat" layoutX="414.0" layoutY="338.0" />
-      <Label layoutX="344.0" layoutY="343.0" text="Nom" />
-      <TextField fx:id="br_data" layoutX="423.0" layoutY="392.0" />
-      <Label fx:id="tfBarCode" layoutX="338.0" layoutY="397.0" text="BarCode" />
+      <Button fx:id="btnAjouter_Categorie" layoutX="349.0" layoutY="398.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
+      <Button fx:id="btnAfficher_Categorie" layoutX="467.0" layoutY="398.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
+      <Button fx:id="btnReset" layoutX="576.0" layoutY="398.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <TextField fx:id="tfNomCat" layoutX="437.0" layoutY="277.0" />
+      <Label layoutX="367.0" layoutY="282.0" text="Nom" />
+      <TextField fx:id="br_data" layoutX="446.0" layoutY="331.0" />
+      <Label fx:id="tfBarCode" layoutX="361.0" layoutY="336.0" text="BarCode" />
       <ImageView fitHeight="128.0" fitWidth="138.0" layoutX="82.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../photos/logoo.png" />
@@ -72,5 +72,6 @@
          <Image url="@../photos/forum.png" />
       </image>
    </ImageView>
+   <Label layoutX="320.0" layoutY="148.0" style="-fx-font-size: 45px;" text="Ajouter une Catégorie" textFill="#e39827" />
    </children>
 </AnchorPane>

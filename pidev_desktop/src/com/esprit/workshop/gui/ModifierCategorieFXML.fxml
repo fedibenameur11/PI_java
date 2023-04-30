@@ -30,10 +30,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="649.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.ModifierCategorieFXMLController">
    <children>
-      <Label layoutX="352.0" layoutY="365.0" text="Nom" />
-      <TextField fx:id="tfNomCat" layoutX="411.0" layoutY="360.0" />
-      <Button fx:id="btnReset" layoutX="556.0" layoutY="433.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
-      <Button fx:id="btnModifier_Categorie" layoutX="436.0" layoutY="416.0" mnemonicParsing="false" onAction="#ModifierCategorie" text="Modifier" />
+      <Label layoutX="369.0" layoutY="279.0" text="Nom" />
+      <TextField fx:id="tfNomCat" layoutX="449.0" layoutY="274.0" />
+      <Button fx:id="btnReset" layoutX="636.0" layoutY="381.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <Button fx:id="btnModifier_Categorie" layoutX="486.0" layoutY="338.0" mnemonicParsing="false" onAction="#ModifierCategorie" text="Modifier" />
       <Line endX="-11.0" endY="64.0" layoutX="315.0" layoutY="571.0" startX="-11.0" startY="-559.0" />
     <ImageView fitHeight="128.0" fitWidth="138.0" layoutX="82.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -80,5 +80,6 @@
          <Image url="@../photos/forum.png" />
       </image>
    </ImageView>
+   <Label layoutX="326.0" layoutY="123.0" style="-fx-font-size: 45px;" text="Modifier une Catégorie" textFill="#e39827" />
    </children>
 </AnchorPane>

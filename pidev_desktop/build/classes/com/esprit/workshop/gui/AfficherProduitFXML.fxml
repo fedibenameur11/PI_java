@@ -82,6 +82,6 @@
          <Image url="@../photos/forum.png" />
       </image>
    </ImageView>
-      <Label layoutX="401.0" layoutY="51.0" style="-fx-font-size: 45px;" text="Bienvenue dans nos Catégories" textFill="#e39827" />
+      <Label layoutX="401.0" layoutY="51.0" style="-fx-font-size: 45px;" text="Bienvenue dans nos produits" textFill="#e39827" />
    </children>
 </AnchorPane>

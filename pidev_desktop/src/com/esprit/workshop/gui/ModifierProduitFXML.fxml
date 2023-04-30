@@ -28,18 +28,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="662.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.ModifierProduitFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="748.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.workshop.gui.ModifierProduitFXMLController">
    <children>
-      <TextField fx:id="tfPoids" layoutX="428.0" layoutY="471.0" />
-      <TextField fx:id="tfQuantite" layoutX="428.0" layoutY="420.0" />
-      <TextField fx:id="tfPrix" layoutX="428.0" layoutY="366.0" />
-      <TextField fx:id="tfNom" layoutX="428.0" layoutY="312.0" />
-      <Label layoutX="366.0" layoutY="476.0" text="poids" />
-      <Label layoutX="358.0" layoutY="425.0" text="quantite" />
-      <Label layoutX="374.0" layoutY="371.0" text="prix" />
-      <Label layoutX="369.0" layoutY="317.0" text="nom" />
-      <Button fx:id="btnReset" layoutX="572.0" layoutY="532.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
-      <Button fx:id="btnModifier_Produit" layoutX="438.0" layoutY="532.0" mnemonicParsing="false" onAction="#ModifierProduit" text="Modifier" />
+      <TextField fx:id="tfPoids" layoutX="411.0" layoutY="413.0" />
+      <TextField fx:id="tfQuantite" layoutX="411.0" layoutY="362.0" />
+      <TextField fx:id="tfPrix" layoutX="411.0" layoutY="308.0" />
+      <TextField fx:id="tfNom" layoutX="411.0" layoutY="254.0" />
+      <Label layoutX="349.0" layoutY="418.0" text="poids" />
+      <Label layoutX="341.0" layoutY="367.0" text="quantite" />
+      <Label layoutX="357.0" layoutY="313.0" text="prix" />
+      <Label layoutX="352.0" layoutY="259.0" text="nom" />
+      <Button fx:id="btnReset" layoutX="555.0" layoutY="474.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <Button fx:id="btnModifier_Produit" layoutX="421.0" layoutY="474.0" mnemonicParsing="false" onAction="#ModifierProduit" text="Modifier" />
       <Line endX="-11.0" endY="64.0" layoutX="315.0" layoutY="571.0" startX="-11.0" startY="-559.0" />
     <ImageView fitHeight="128.0" fitWidth="138.0" layoutX="82.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -86,5 +86,6 @@
          <Image url="@../photos/forum.png" />
       </image>
    </ImageView>
+   <Label layoutX="326.0" layoutY="111.0" style="-fx-font-size: 45px;" text="Modifier un produit" textFill="#e39827" />
    </children>
 </AnchorPane>
