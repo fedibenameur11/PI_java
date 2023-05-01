@@ -4,9 +4,7 @@
  */
 package com.dynamics.pidev.entites;
 
-import java.util.logging.Logger;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 /**
  *
@@ -17,6 +15,10 @@ public class Question {
     private int id;
     private String contenu;
     private String created_at;
+    private int likes;
+    private int user_id;
+    
+     
     
     
     public Question() {
@@ -26,6 +28,19 @@ public class Question {
         this.id = id;
         this.contenu = contenu;
         this.created_at = created_at;
+    }
+     public Question(String contenu, String created_at,int likes) {
+       
+        this.contenu = contenu;
+        this.created_at = created_at;
+        this.likes = likes;
+    }
+      public Question(String contenu, String created_at,int likes,int user_id) {
+       
+        this.contenu = contenu;
+        this.created_at = created_at;
+        this.likes = likes;
+        this.user_id = user_id;
     }
 
     public Question(String contenu) {
@@ -55,6 +70,25 @@ public class Question {
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
     }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+    
+    
+    
 
     @Override
     public String toString() {

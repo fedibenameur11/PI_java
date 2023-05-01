@@ -10,6 +10,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
@@ -22,10 +23,17 @@ public class Newfxmain extends Application {
        @Override
     public void start(Stage primaryStage) {
        
-        try {
-            
+        try {        
            
-            Parent root = FXMLLoader.load(getClass().getResource("../gui/AddQuestion.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/AfficherQuestion.fxml"));
+            
+         Pane pane = new Pane();
+        pane.setStyle("-fx-background-color: red;"); // Définition de la couleur de fond en rouge
+
+        // Changement de la couleur de fond en bleu au clic sur le panneau
+        pane.setOnMouseClicked(event -> {
+            pane.setStyle("-fx-background-color: blue;"); // Définition de la couleur de fond en bleu
+        });
             
             Scene scene = new Scene(root);
         

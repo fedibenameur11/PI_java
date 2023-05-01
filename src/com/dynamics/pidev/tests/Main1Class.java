@@ -5,10 +5,9 @@
  */
 package com.dynamics.pidev.tests;
 
-import com.dynamics.pidev.entites.Person;
+
 import com.dynamics.pidev.entites.Question;
 import com.dynamics.pidev.entites.Reponse;
-import com.dynamics.pidev.services.ServicePerson;
 import com.dynamics.pidev.services.ServiceQuestion;
 import com.dynamics.pidev.services.ServiceReponse;
 import com.dynamics.pidev.workshop.utils.MyConnexion;
@@ -44,7 +43,7 @@ public class Main1Class {
         
         try {
             sp.insertOne(q);
-            sr.insertOne(r);
+            
             System.out.println(sp.selectAll());
             System.out.println(sr.selectAll());
         } catch (SQLException ex) {

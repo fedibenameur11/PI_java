@@ -4,8 +4,6 @@
  */
 package com.dynamics.pidev.entites;
 
-import java.util.Date;
-
 /**
  *
  * @author trabe
@@ -14,6 +12,9 @@ public class Reponse {
     private int id;
     private String rep;
     private String created_at;
+    private int user_id;
+    private int question_id;
+    private int likes;
 
     public Reponse() {
     }
@@ -22,6 +23,18 @@ public class Reponse {
         this.id = id;
         this.rep = contenurep;
         this.created_at = created_at;
+    }
+    public Reponse(int id,String contenurep, String created_at,int user_id) {
+        this.id = id;
+        this.rep = contenurep;
+        this.created_at = created_at;
+        this.user_id = user_id; 
+    }
+    public Reponse(String contenurep, String created_at,int user_id,int question_id) {
+        this.rep = contenurep;
+        this.created_at = created_at;
+        this.user_id = user_id; 
+        this.question_id = question_id;
     }
 
     public Reponse(String rep) {
@@ -53,6 +66,32 @@ public class Reponse {
         this.created_at = created_at;
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public int getQuestion_id() {
+        return question_id;
+    }
+
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Reponse{" + "id=" + id + ", contenurep=" + rep + ", created_at=" + created_at + '}';
