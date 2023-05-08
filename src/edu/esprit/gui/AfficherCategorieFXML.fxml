@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="493.0" prefWidth="545.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.AfficherCategorieFXMLController">
+   <children>
+      <TableView fx:id="tableViewC" layoutX="47.0" layoutY="168.0" prefHeight="264.0" prefWidth="452.0">
+        <columns>
+          <TableColumn fx:id="nomCol" prefWidth="128.0" text="Nom" />
+            <TableColumn fx:id="colSuppression" prefWidth="96.0" text="Supprimer" />
+            <TableColumn fx:id="colModification" prefWidth="108.0" text="Modifier" />
+            <TableColumn fx:id="ActionCol" prefWidth="118.0" text="Action" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfRechercheNom" layoutX="230.0" layoutY="128.0" onAction="#RechercherNom" />
+      <Button fx:id="btn_recherche" layoutX="396.0" layoutY="128.0" mnemonicParsing="false" onAction="#RechercherNom" text="Rechercher" />
+      <Button fx:id="btn_Ajouter_Categorie" layoutX="218.0" layoutY="442.0" mnemonicParsing="false" onAction="#Ajouter_Categorie" text="Ajouter Catégorie" />
+      <Label layoutX="96.0" layoutY="40.0" prefHeight="55.0" prefWidth="355.0" style="-fx-font-size: 25px;" text="Bienvenue dans nos Catégories" textFill="#e39827" />
+   </children>
+</AnchorPane>

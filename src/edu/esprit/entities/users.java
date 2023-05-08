@@ -10,7 +10,7 @@ package edu.esprit.entities;
  * @author wassim
  */
 public class users {
-    private int id;
+    private int id , categorie_user_id;
     private String nom,prenom,email,password,adresse;
     private int telephone,code_postale;
 
@@ -26,9 +26,30 @@ public class users {
         this.telephone = telephone;
         this.code_postale = code_postale;
     }
+      public users(String nom, String prenom, String email, String password, String adresse, int telephone, int code_postale, int categorie_user_id) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.adresse = adresse;
+        this.telephone = telephone;
+        this.code_postale = code_postale;
+    }
 
     public users(int id, String nom, String prenom, String email, String password, String adresse, int telephone, int code_postale) {
         this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.adresse = adresse;
+        this.telephone = telephone;
+        this.code_postale = code_postale;
+    }
+
+    public users(int id, int categorie_user_id, int telephone, String nom, String prenom, String email, String password, String adresse, int code_postale) {
+        this.id = id;
+        this.categorie_user_id = categorie_user_id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -102,9 +123,17 @@ public class users {
         this.code_postale = code_postale;
     }
 
+    public int getCategorie_user_id() {
+        return categorie_user_id;
+    }
+
+    public void setCategorie_user_id(int categorie_user_id) {
+        this.categorie_user_id = categorie_user_id;
+    }
+    
     @Override
     public String toString() {
-        return "users{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password=" + password + ", adresse=" + adresse + ", telephone=" + telephone + ", code_postale=" + code_postale + '}';
+        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", password=" + password + ", adresse=" + adresse + ", telephone=" + telephone + ", code_postale=" + code_postale + '}';
     }
     
 

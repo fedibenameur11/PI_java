@@ -18,4 +18,15 @@ public interface Services<T> {
     public void delete(int id);
     public List<T> getAll();
     public T getOneById(int id);
+    
+    void insertOne(T t) throws SQLException;
+    
+    void updateOne(T t, int id) throws SQLException;
+    
+    //void deleteOne(T t) throws SQLException;
+    void deleteOne(int id) throws SQLException;
+    
+    List<T> selectAll() throws SQLException;
+    
+    List<String> selectAllNames() throws SQLException;
 }

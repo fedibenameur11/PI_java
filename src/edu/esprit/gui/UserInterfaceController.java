@@ -62,8 +62,7 @@ public class UserInterfaceController implements Initializable {
     @FXML
     private TableView<users> usersTable;
 
-    @FXML
-    private TableColumn<users, Integer> idColumn;
+  
 
     @FXML
     private TableColumn<users, String> emailColumn;
@@ -89,10 +88,7 @@ public class UserInterfaceController implements Initializable {
     private UsersService usersService;
     @FXML
     private Button excel;
-    @FXML
-    private Button logout;
-    @FXML
-    private Label username;
+ 
     @FXML
     private TextField searchField;
     
@@ -103,8 +99,8 @@ public class UserInterfaceController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         usersService = new UsersService();
-        username.setText(Log_in.getNom());
-    idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        
+   
     emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
     passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
     nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -186,19 +182,7 @@ public class UserInterfaceController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    @FXML
-    private void Logout(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            Scene homaepageScene = new Scene(root);
-            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            appStage.setScene(homaepageScene);
-            appStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(UserInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+    
     @FXML
     private void excelfile(ActionEvent event) {
         ArrayList<users> data = new ArrayList<users>();

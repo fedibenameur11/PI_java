@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.CRUDAbonnementCoachFXMLController">
+   <children>
+      <Label layoutX="44.0" layoutY="82.0" text="Liste des abonnement coachs des clients :" textFill="#e39827">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="492.0" layoutY="159.0" prefHeight="306.0" prefWidth="270.0" style="-fx-background-color: #0E1014;">
+         <children>
+            <Label layoutX="48.0" layoutY="28.0" text="Client" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="77.0" text="Coach" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="127.0" text="Durée abopnnement" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDuree" layoutX="145.0" layoutY="123.0" prefHeight="25.0" prefWidth="102.0" />
+            <DatePicker fx:id="dateDebut" layoutX="141.0" layoutY="173.0" prefHeight="25.0" prefWidth="116.0" />
+            <DatePicker fx:id="dateFin" layoutX="141.0" layoutY="217.0" prefHeight="25.0" prefWidth="116.0" />
+            <Label layoutX="32.0" layoutY="177.0" text="Date debut" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="221.0" text="Date fin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtStatut" layoutX="141.0" layoutY="269.0" prefHeight="25.0" prefWidth="116.0" />
+            <Label layoutX="47.0" layoutY="273.0" text="Statut" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="choiceClient" layoutX="144.0" layoutY="24.0" prefHeight="25.0" prefWidth="102.0" />
+            <ComboBox fx:id="choiceCoach" layoutX="144.0" layoutY="73.0" prefHeight="25.0" prefWidth="102.0" />
+         </children>
+      </Pane>
+      <TableView fx:id="tableAbonn" layoutX="21.0" layoutY="168.0" prefHeight="222.0" prefWidth="442.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="27.0" text="ID" />
+          <TableColumn fx:id="clientCol" prefWidth="54.0" text="Client" />
+            <TableColumn fx:id="coachCol" prefWidth="50.333343505859375" text="Coach" />
+            <TableColumn fx:id="dureeCol" prefWidth="89.6666259765625" text="Duree abonnement" />
+            <TableColumn fx:id="dateDebutCol" prefWidth="82.3333740234375" text="Date debut" />
+            <TableColumn fx:id="dateFinCol" prefWidth="69.3333740234375" text="Date fin" />
+            <TableColumn fx:id="statutCol" prefWidth="66.0" text="Statut" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAddAbonnCoach" layoutX="21.0" layoutY="397.0" mnemonicParsing="false" onAction="#AddAbonnCoach" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: #198754;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnUpdateAbonnCoach" layoutX="182.0" layoutY="397.0" mnemonicParsing="false" onAction="#UpdateAbonnCoach" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: #0dcaf0;" text="Mettre a jour" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDeleteAbonnCoach" layoutX="357.0" layoutY="397.0" mnemonicParsing="false" onAction="#DeleteAbonnCoach" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: #b12728;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="exportpdf" layoutX="482.0" layoutY="78.0" mnemonicParsing="false" onAction="#ExportButton" prefHeight="35.0" prefWidth="102.0" style="-fx-background-color: e39827;" text="PDF" textFill="#141111">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

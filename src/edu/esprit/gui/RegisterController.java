@@ -66,7 +66,14 @@ public class RegisterController implements Initializable {
         // TODO
     }    
     
-    
+    @FXML 
+        void switchButton1(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     @FXML
      private void Registration(ActionEvent event) throws IOException, SQLException{
        if (emailField.getText().isEmpty() || passwordField.getText().isEmpty()|| nomField.getText().isEmpty() ||  prenomField.getText().isEmpty() || adresseField.getText().isEmpty() || telephoneField.getText().isEmpty() || codePostaleField.getText().isEmpty() ) {

@@ -18,7 +18,7 @@
             <AnchorPane layoutX="-27.0" layoutY="85.0" prefHeight="390.0" prefWidth="626.0" styleClass="root">
                <children>
                   <Button fx:id="login" layoutX="246.0" layoutY="325.0" mnemonicParsing="false" onAction="#Registration" prefHeight="37.0" prefWidth="95.0" styleClass="addbtn" text="S'enregistrer" />
-                  <Button fx:id="forgotpasswd" layoutX="362.0" layoutY="325.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="94.0" styleClass="deletebtn" text="Annuler" />
+                  <Button fx:id="forgotpasswd" layoutX="362.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchButton1" prefHeight="37.0" prefWidth="94.0" styleClass="deletebtn" text="Annuler" />
                   <VBox layoutX="317.0" layoutY="14.0" prefHeight="166.0" prefWidth="153.0" spacing="21.0">
                      <children>
                         <TextField fx:id="nomField" layoutX="10.0" layoutY="10.0" />

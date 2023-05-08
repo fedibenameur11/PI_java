@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="brcodebutto" prefHeight="472.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.AfficherLivraison1Controller">
+   <TableView fx:id="table" layoutX="93.0" layoutY="153.0" prefHeight="179.0" prefWidth="508.0">
+      <columns>
+         <TableColumn fx:id="nomColumn" prefWidth="124.0" text="id" />
+         <TableColumn fx:id="adresseColumn" prefWidth="113.0" text="nom_livraison" />
+         <TableColumn fx:id="numColumn" prefWidth="134.0" text="date" />
+         <TableColumn fx:id="codeColumn" minWidth="0.0" prefWidth="141.0" text="destination" />
+         <TableColumn fx:id="villeColumn" prefWidth="99.0" />
+         <TableColumn fx:id="prixColumn" prefWidth="90.0" />
+      </columns>
+   </TableView>
+   <Button layoutX="93.0" layoutY="339.0" mnemonicParsing="false" onAction="#switchButton1" text="ajouter" />
+   <Button layoutX="355.0" layoutY="339.0" mnemonicParsing="false" onAction="#switchButton2" text="modifier" />
+   <Label layoutX="233.0" layoutY="48.0" style="-fx-font-size: 45px;" text="livraisons" textFill="#e39827" />
+   <Button fx:id="deleteButton" layoutX="454.0" layoutY="339.0" mnemonicParsing="false" onAction="#deleteSalle" text="supprimer" />
+   <TextField fx:id="filterField" layoutX="120.0" layoutY="120.0" promptText="Search" />
+   <TextField fx:id="br_data" layoutX="93.0" layoutY="377.0" promptText="BarCode" />
+   <Button fx:id="brcbtn" layoutX="261.0" layoutY="377.0" mnemonicParsing="false" onAction="#generateBarcode" text="generate" />
+   <Button layoutX="402.0" layoutY="377.0" mnemonicParsing="false" onAction="#switchButton3" text="voir les commandes" />
+</AnchorPane>

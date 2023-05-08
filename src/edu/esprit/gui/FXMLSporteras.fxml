@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="814.0" prefWidth="1262.0" stylesheets="@styles/fxmlsporteras.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.FXMLSporterasController">
+   <children>
+      <BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1361.0" stylesheets="@styles/fxmlsporteras.css">
+         <right>
+            <VBox prefHeight="660.0" prefWidth="217.0" stylesheets="@styles/fxmlsporteras.css" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="586.0" prefWidth="217.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="26.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </right>
+         <top>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="86.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/logoo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="50.0" right="250.0" />
+                     </HBox.margin>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <Button fx:id="account" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#myAccount" styleClass="button3" stylesheets="@styles/fxmlsporteras.css">
+                     <HBox.margin>
+                        <Insets left="710.0" top="20.0" />
+                     </HBox.margin>
+                     
+                  </Button>
+                  <ImageView fitHeight="36.0" fitWidth="34.0">
+                     <image>
+                        <Image url="@images/coach.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                
+                  <Label fx:id="username" minWidth="-Infinity" prefHeight="27.0" prefWidth="121.0" text="Label">
+                     <HBox.margin>
+                        <Insets top="26.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <VBox prefHeight="728.0" prefWidth="277.0" style="-fx-background-color: #fff;" styleClass="rect1" stylesheets="@styles/fxmlsporteras.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="home" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#home" prefHeight="50.0" prefWidth="243.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Home">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/accueil.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="categories" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="610.0" mnemonicParsing="false" onAction="#Categories" prefHeight="50.0" prefWidth="228.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Catégorie">
+                     
+                                       <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/categorie.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="produit" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Produit" prefHeight="50.0" prefWidth="228.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Produit">
+                     
+                                       <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/produit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="forum" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Forum" prefHeight="37.0" prefWidth="213.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Forum">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/bavarder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="abonnement" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" onAction="#Abonnement" prefHeight="50.0" prefWidth="228.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Abonnement">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/abonnement.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="salle" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="235.0" mnemonicParsing="false" onAction="#Salle" prefHeight="50.0" prefWidth="228.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Salle">
+                   
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/salle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="commande" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="435.0" mnemonicParsing="false" onAction="#Commande" prefHeight="50.0" prefWidth="228.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Commande">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/commande.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="client" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Client" prefHeight="41.0" prefWidth="282.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Liste des coachs">
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/coach.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  
+                              <Button fx:id="utilisateur" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="585.0" mnemonicParsing="false" onAction="#utilisateurList" prefHeight="45.0" prefWidth="274.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des utilisateurs">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/utilisateurs.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="gforum" mnemonicParsing="false" prefHeight="25.0" prefWidth="233.0" styleClass="button3" onAction="#Gforum" stylesheets="@styles/fxmlsporteras.css" text="Gestion Forum">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/bavarder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="livraison" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="185.0" mnemonicParsing="false" onAction="#Livraison" prefHeight="44.0" prefWidth="284.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des livraisons">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/livraison.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="gcategorie" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="335.0" mnemonicParsing="false" onAction="#Gcategorie" prefHeight="45.0" prefWidth="289.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des catégories">
+                    
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/categorie.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="gproduit" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" onAction="#Gproduit" prefHeight="46.0" prefWidth="281.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des produits">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/produit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="coach" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Coach" prefHeight="44.0" prefWidth="287.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des demandes  ">
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/demander.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="gcoach" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="560.0" mnemonicParsing="false" onAction="#Gcoach" prefHeight="39.0" prefWidth="290.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des abonnements coachs">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/gestabonnement.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="gsalle" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="385.0" mnemonicParsing="false" onAction="#Gsalle" prefHeight="47.0" prefWidth="303.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des salles">
+                     
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/salle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="gabonnement" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="535.0" mnemonicParsing="false" onAction="#Gabonnement" prefHeight="47.0" prefWidth="295.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Gestion des abonnements">
+                    
+                                 <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/abonnement.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="logout" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="635.0" mnemonicParsing="false" onAction="#Logout" prefHeight="50.0" prefWidth="228.0" styleClass="button3" stylesheets="@styles/fxmlsporteras.css" text="Logout">
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@images/icons8-logout-rounded-30.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

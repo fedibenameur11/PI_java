@@ -17,13 +17,13 @@ public class login {
     // Declare instance variables for username and password
     private String username;
     private String password;
-    private String role;
     private String nom;
      private String adresse;
     private int id;
     private int telephone;
     private String prenom;
     private int code_postale;
+    private int role;
     
     
     public int getId() {
@@ -66,11 +66,11 @@ public class login {
         this.prenom = prenom;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 

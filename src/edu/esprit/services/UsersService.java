@@ -140,6 +140,7 @@ public void modifier(int id, users u) {
                 user.setAdresse(rs.getString("adresse"));
                 user.setTelephone(rs.getInt("telephone"));
                 user.setCode_postale(rs.getInt("code_postale"));
+                user.setCategorie_user_id(rs.getInt("roles"));
               
             }
         }

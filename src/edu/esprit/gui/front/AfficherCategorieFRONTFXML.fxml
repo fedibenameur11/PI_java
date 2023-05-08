@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="949.0" stylesheets="@css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.front.AfficherCategorieFRONTFXMLController">
+   <children>
+      <TextField fx:id="tfRechercheNom" layoutX="352.0" layoutY="164.0" onAction="#RechercherNom" />
+      <Button fx:id="btn_recherche" layoutX="661.0" layoutY="195.0" mnemonicParsing="false" onAction="#RechercherNom" text="Recherche" />
+      <TableView fx:id="tableViewC" layoutX="224.0" layoutY="240.0" prefHeight="381.0" prefWidth="410.0">
+        <columns>
+          <TableColumn fx:id="nomCol" prefWidth="236.0" text="Nom" />
+          <TableColumn fx:id="ActionCol" prefWidth="174.0" text="Action" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="118.0" fitWidth="116.0" layoutX="74.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../photos/logoo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="255.0" layoutY="49.0" text="Utilisateur" />
+      <Label layoutX="405.0" layoutY="49.0" text="Produit" />
+      <Label layoutX="521.0" layoutY="49.0" text="Commande" />
+      <Label layoutX="691.0" layoutY="49.0" text="Coach" />
+      <Label layoutX="816.0" layoutY="49.0" text="Salle" textFill="#e39827" />
+      <Label layoutX="907.0" layoutY="49.0" prefHeight="21.0" prefWidth="49.0" text="Forum" />
+      <Label layoutX="288.0" layoutY="84.0" style="-fx-font-size: 45px;" text="Bienvenue dans nos Catégories" textFill="#e39827" />
+   </children>
+</AnchorPane>

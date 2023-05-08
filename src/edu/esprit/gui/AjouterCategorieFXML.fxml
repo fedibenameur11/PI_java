@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="771.0" stylesheets="@front/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.AjouterCategorieFXMLController">
+   <children>
+      <Button fx:id="btnAjouter_Categorie" layoutX="225.0" layoutY="359.0" mnemonicParsing="false" onAction="#AjouterCategorie" text="Ajouter" />
+      <Button fx:id="btnAfficher_Categorie" layoutX="343.0" layoutY="359.0" mnemonicParsing="false" onAction="#AfficherCategorie" text="Afficher" />
+      <Button fx:id="btnReset" layoutX="452.0" layoutY="359.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+      <TextField fx:id="tfNomCat" layoutX="313.0" layoutY="238.0" />
+      <Label layoutX="243.0" layoutY="243.0" text="Nom" />
+      <TextField fx:id="br_data" layoutX="322.0" layoutY="292.0" />
+      <Label fx:id="tfBarCode" layoutX="237.0" layoutY="297.0" text="BarCode" />
+   <Label layoutX="142.0" layoutY="77.0" style="-fx-font-size: 45px;" text="Ajouter une Catégorie" textFill="#e39827" />
+   </children>
+</AnchorPane>

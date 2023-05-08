@@ -94,6 +94,7 @@ public class LoginController implements Initializable {
         Log_in.setAdresse(u.getAdresse());
         Log_in.setTelephone(u.getTelephone());
         Log_in.setCode_postale(u.getCode_postale());
+        Log_in.setRole(u.getCategorie_user_id());
         
             System.out.println(u.getId());
         System.out.println(Log_in.getId());
@@ -102,7 +103,7 @@ public class LoginController implements Initializable {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Authentifié avec Succées!", ButtonType.OK);
             a.showAndWait(); 
             
-            Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLSporteras.fxml"));
             Scene homaepageScene = new Scene(root);
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage.setScene(homaepageScene);
